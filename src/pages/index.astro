@@ -1,8 +1,63 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+// --- Page data -------------------------------------------------------------
+
+const roles = [
+	{
+		company: 'Acquia',
+		title: 'DXP Support Engineer',
+		period: '2022 — Present',
+		summary:
+			'Front-line and escalation support for Drupal-based Digital Experience Platforms — debugging production incidents, tuning performance, and guiding enterprise customers through complex cloud deployments.',
+		tags: ['Drupal', 'DXP', 'Cloud Platform', 'Incident Response'],
+	},
+	{
+		company: 'Diksha Technologies',
+		title: 'Operations & Support (Bharti Airtel)',
+		period: '2020 — 2022',
+		summary:
+			'Operations and technical support across Bharti Airtel systems — monitoring, ticket triage, and process reliability that laid the foundation for a move into engineering.',
+		tags: ['Operations', 'Monitoring', 'Telecom', 'Process'],
+	},
+];
+
+const stack = [
+	{ name: 'Docker', hint: 'Containers' },
+	{ name: 'Kubernetes', hint: 'Orchestration' },
+	{ name: 'AWS', hint: 'Cloud' },
+	{ name: 'CI/CD', hint: 'Pipelines' },
+	{ name: 'Python', hint: 'Automation' },
+	{ name: 'n8n', hint: 'Workflows' },
+];
+
+const posts = [
+	{
+		title: 'From Support Queue to On-Call: What DXP Taught Me About Reliability',
+		excerpt:
+			'The escalation queue is the best SRE classroom there is. Here is how years of triaging production incidents reshaped the way I think about resilience.',
+		date: 'Aug 2026',
+		readTime: '6 min read',
+		tag: 'Reliability',
+	},
+	{
+		title: 'Containerizing a Legacy Drupal Stack Without Downtime',
+		excerpt:
+			'A pragmatic walkthrough of moving a stateful, plugin-heavy application into Docker and Kubernetes — one strangler-fig slice at a time.',
+		date: 'Jul 2026',
+		readTime: '9 min read',
+		tag: 'DevOps',
+	},
+	{
+		title: 'Error Budgets for Support Engineers',
+		excerpt:
+			'SLOs are not just for platform teams. A field guide to translating customer pain into measurable reliability targets everyone can rally behind.',
+		date: 'Jun 2026',
+		readTime: '5 min read',
+		tag: 'SRE',
+	},
+];
 ---
 
 <!doctype html>
@@ -10,40 +65,203 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+	<body class="min-h-screen bg-slate-950 font-sans text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-white">
+		<!-- Ambient background glow -->
+		<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+			<div class="absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[120px]"></div>
+			<div class="absolute top-1/3 -right-32 h-96 w-96 rounded-full bg-indigo-500/10 blur-[120px]"></div>
+		</div>
+
+		<!-- Header / Nav -->
+		<header class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/70 backdrop-blur-lg">
+			<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+				<a href="/" class="group flex items-center gap-2 text-sm font-semibold tracking-tight text-white">
+					<span class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 font-mono text-slate-950">K</span>
+					Keshav Bhardwaj
+				</a>
+				<div class="hidden items-center gap-8 text-sm text-slate-400 sm:flex">
+					<a href="#work" class="transition hover:text-white">Work</a>
+					<a href="#stack" class="transition hover:text-white">Stack</a>
+					<a href="#writing" class="transition hover:text-white">Writing</a>
+					<a
+						href="/blog"
+						class="rounded-full border border-white/10 px-4 py-1.5 text-white transition hover:border-cyan-400/50 hover:bg-white/5"
+					>
+						Read the blog
+					</a>
+				</div>
+			</nav>
+		</header>
+
+		<main class="mx-auto max-w-6xl px-6">
+			<!-- Hero -->
+			<section class="flex flex-col items-start gap-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
+				<span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
+					<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-400"></span>
+					DXP Support Engineer @ Acquia · 5 years in the trenches
+				</span>
+
+				<h1 class="max-w-4xl text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl">
+					From <span class="text-slate-400">DXP Support</span> to
+					<span class="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
+						DevOps &amp; Engineering Leadership
+					</span>
+				</h1>
+
+				<p class="max-w-2xl text-lg leading-relaxed text-slate-400">
+					I spent 3.5+ years keeping enterprise Drupal experiences reliable at Acquia — and 5 years total
+					learning what breaks in production. Now I build the automation, containers, and cloud
+					infrastructure that stop those fires before they start.
+				</p>
+
+				<div class="mt-4 flex flex-wrap items-center gap-4">
+					<a
+						href="/blog"
+						class="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/10 transition hover:bg-cyan-300"
+					>
+						View Articles
+						<span class="transition group-hover:translate-x-0.5" aria-hidden="true">&rarr;</span>
+					</a>
+					<a
+						href="#philosophy"
+						class="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-cyan-400/50 hover:bg-white/5"
+					>
+						Leadership Philosophy
+					</a>
+				</div>
+			</section>
+
+			<!-- Career Highlights -->
+			<section id="work" class="scroll-mt-24 border-t border-white/5 py-20">
+				<div class="mb-12 flex flex-col gap-3">
+					<h2 class="text-sm font-semibold uppercase tracking-widest text-cyan-400">Career Highlights</h2>
+					<p class="max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+						Two roles, one throughline: reliability under pressure.
+					</p>
+				</div>
+
+				<div class="grid gap-6 md:grid-cols-2">
+					{
+						roles.map((role) => (
+							<article class="group relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition hover:border-cyan-400/30 hover:bg-white/[0.05]">
+								<div class="flex items-baseline justify-between gap-4">
+									<h3 class="text-xl font-semibold text-white">{role.company}</h3>
+									<span class="shrink-0 text-xs font-medium text-slate-500">{role.period}</span>
+								</div>
+								<p class="mt-1 text-sm font-medium text-cyan-300">{role.title}</p>
+								<p class="mt-4 flex-1 text-sm leading-relaxed text-slate-400">{role.summary}</p>
+								<ul class="mt-6 flex flex-wrap gap-2">
+									{role.tags.map((tag) => (
+										<li class="rounded-md border border-white/10 bg-slate-900/60 px-2.5 py-1 text-xs text-slate-400">
+											{tag}
+										</li>
+									))}
+								</ul>
+							</article>
+						))
+					}
+				</div>
+			</section>
+
+			<!-- DevOps Stack Matrix -->
+			<section id="stack" class="scroll-mt-24 border-t border-white/5 py-20">
+				<div class="mb-12 flex flex-col gap-3">
+					<h2 class="text-sm font-semibold uppercase tracking-widest text-cyan-400">DevOps Stack</h2>
+					<p class="max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+						The tools I reach for to ship and operate systems.
+					</p>
+				</div>
+
+				<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+					{
+						stack.map((tool) => (
+							<div class="group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-6 text-center transition hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.06]">
+								<span class="text-base font-semibold text-white">{tool.name}</span>
+								<span class="text-xs uppercase tracking-wide text-slate-500">{tool.hint}</span>
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<!-- Leadership Philosophy -->
+			<section id="philosophy" class="scroll-mt-24 border-t border-white/5 py-20">
+				<div class="grid gap-10 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-8 sm:p-12 lg:grid-cols-[1fr_1.2fr]">
+					<div class="flex flex-col gap-3">
+						<h2 class="text-sm font-semibold uppercase tracking-widest text-cyan-400">Leadership Philosophy</h2>
+						<p class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+							Support is where empathy meets engineering.
+						</p>
+					</div>
+					<div class="flex flex-col gap-4 text-slate-400">
+						<p class="leading-relaxed">
+							Every outage is a conversation between a system and the people who depend on it. Years on the
+							escalation queue taught me to listen to both — to translate customer pain into runbooks,
+							automation, and post-incident learning rather than blame.
+						</p>
+						<p class="leading-relaxed">
+							As I grow into technical leadership, my goal is the same one that made me a good support
+							engineer: build teams and platforms that fail gracefully, recover fast, and get a little more
+							boring every quarter.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Recent Writing -->
+			<section id="writing" class="scroll-mt-24 border-t border-white/5 py-20">
+				<div class="mb-12 flex flex-wrap items-end justify-between gap-4">
+					<div class="flex flex-col gap-3">
+						<h2 class="text-sm font-semibold uppercase tracking-widest text-cyan-400">Recent Writing</h2>
+						<p class="max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+							Notes on DevOps, reliability, and the road out of the support queue.
+						</p>
+					</div>
+					<a href="/blog" class="text-sm font-medium text-cyan-300 transition hover:text-cyan-200">
+						All articles &rarr;
+					</a>
+				</div>
+
+				<div class="grid gap-6 md:grid-cols-3">
+					{
+						posts.map((post) => (
+							<a
+								href="/blog"
+								class="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-cyan-400/30 hover:bg-white/[0.05]"
+							>
+								<div class="flex items-center gap-3 text-xs text-slate-500">
+									<span class="rounded-md bg-cyan-500/10 px-2 py-0.5 font-medium text-cyan-300">{post.tag}</span>
+									<span>{post.date}</span>
+									<span aria-hidden="true">·</span>
+									<span>{post.readTime}</span>
+								</div>
+								<h3 class="mt-4 text-lg font-semibold leading-snug text-white transition group-hover:text-cyan-200">
+									{post.title}
+								</h3>
+								<p class="mt-3 flex-1 text-sm leading-relaxed text-slate-400">{post.excerpt}</p>
+								<span class="mt-6 inline-flex items-center gap-1 text-sm font-medium text-cyan-300">
+									Read more
+									<span class="transition group-hover:translate-x-0.5" aria-hidden="true">&rarr;</span>
+								</span>
+							</a>
+						))
+					}
+				</div>
+			</section>
 		</main>
-		<Footer />
+
+		<!-- Footer -->
+		<footer class="border-t border-white/5">
+			<div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-10 text-sm text-slate-500 sm:flex-row">
+				<p>&copy; {new Date().getFullYear()} Keshav Bhardwaj. Built with Astro.</p>
+				<div class="flex items-center gap-6">
+					<a href="/blog" class="transition hover:text-white">Blog</a>
+					<a href="/about" class="transition hover:text-white">About</a>
+					<a href="https://github.com/keshavbhardwaz" target="_blank" rel="noopener" class="transition hover:text-white">
+						GitHub
+					</a>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>
