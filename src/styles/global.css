@@ -169,3 +169,29 @@
 		scroll-behavior: auto !important;
 	}
 }
+
+/* Analog film grain overlay */
+.grain {
+	z-index: 60;
+	pointer-events: none;
+	opacity: 0.035;
+	mix-blend-mode: overlay;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+	position: fixed;
+	inset: 0;
+}
+
+/* Clean horizontal scroll track utilities */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+/* Stacking capability card styling */
+.stack-card {
+	will-change: transform;
+}
+

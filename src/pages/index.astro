@@ -4,7 +4,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE, SOCIALS, PROFILE } from '../consts';
 
-// --- Portfolio Data & Matrices ----------------------------------------------
+// --- Data Collections --------------------------------------------------------
 
 /** Quick impact metrics for the hero bar */
 const metrics = [
@@ -19,9 +19,9 @@ const metrics = [
 		sub: 'Bharti Airtel via Diksha',
 	},
 	{
-		value: '500+',
-		label: 'Escalations Resolved',
-		sub: 'L3 production incidents',
+		value: '9x Exams',
+		label: 'Competitive Testing',
+		sub: 'UPSC CDS (3x), AFCAT (5x), IR (1x)',
 	},
 	{
 		value: '99.9%',
@@ -30,65 +30,73 @@ const metrics = [
 	},
 ];
 
-/** Detailed interactive career journey entries */
-const careerJourney = [
+/** Stacking capability cards (Option B) */
+const capabilities = [
 	{
-		id: 'acquia',
-		role: 'Drupal Digital Experience (DXP) Support Engineer',
-		company: 'Acquia',
-		location: 'Remote · India',
-		period: 'Dec 2022 – Present (~3.5+ years)',
-		badge: 'Enterprise Escalations & Cloud',
-		current: true,
-		headline: 'Front-line & escalation ownership for mission-critical enterprise Drupal platforms on Acquia Cloud.',
-		summary:
-			'Navigating the intersection of enterprise Drupal applications and cloud infrastructure. Responsible for triaging Sev-1 customer outages, conducting root-cause postmortems, profiling database bottlenecks, and mentoring teammates on diagnostic runbooks.',
-		achievements: [
-			'Debugged 500+ high-severity production tickets spanning stack traces, PHP fatal errors, memory leaks, and varnish/CDN cache invalidation failures.',
-			'Collaborated with cloud platform engineers to isolate infrastructure anomalies across Acquia Cloud Next containerized architecture.',
-			'Authored comprehensive internal runbooks on database deadlock isolation and automated cache clearing that reduced recurring MTTR by ~25%.',
-			'Mentored newer support engineers in Linux command-line diagnostics, Drush utilities, and APM tracing with New Relic / Datadog.',
-		],
-		techStack: [
-			'Drupal 9/10',
-			'Acquia Cloud',
-			'Site Factory',
-			'MySQL / Aurora',
-			'Varnish',
-			'New Relic',
-			'Datadog',
-			'Drush',
-			'Bash',
-			'Git',
-		],
+		numeral: '01',
+		title: 'DXP Support & Enterprise Escalations',
+		headline: 'Front-line and Sev-1 escalation ownership for mission-critical enterprise Drupal platforms on Acquia Cloud.',
+		body: 'Deep-dive diagnostics into PHP core stack traces, MySQL query bottlenecks, memory exhaustion, Varnish cache topologies, and containerized platform infrastructure. Getting production quiet again when the stakes are highest.',
+		tags: ['Drupal 9/10', 'Acquia Cloud', 'Site Factory', 'Escalations', 'Varnish / CDN'],
+		inverted: false,
 	},
 	{
-		id: 'diksha',
-		role: 'Application & Database Support / Operations Engineer',
-		company: 'Diksha Technologies (Catering to Bharti Airtel)',
-		location: 'Gurugram, India',
-		period: 'June 2021 – Dec 2022 (1.5 years)',
-		badge: 'Telecom 24x7 Operations & Reliability',
-		current: false,
-		headline: '24x7 mission-critical operations and database monitoring for national telecommunication infrastructure.',
-		summary:
-			'Managed high-volume telecom billing, provisioning, and customer-facing support systems. Gained deep empathy for systemic communication during production outages and built foundational discipline in Linux administration and database health.',
-		achievements: [
-			'Maintained 99.9% uptime compliance across critical billing and database servers under strict telecom SLAs.',
-			'Triaged real-time telemetry alerts, identifying network hiccups and database locking issues before customer impact escalated.',
-			'Automated recurring operational health-check audits using custom Bash cron jobs, eliminating ~4 hours of weekly manual reporting toil.',
-			'Coordinated cross-functional bridge calls during major incidents, delivering clear executive situation reports (sitreps) and post-incident chronologies.',
-		],
-		techStack: [
-			'Linux (RHEL / CentOS)',
-			'Oracle DB',
-			'MySQL',
-			'Bash Scripting',
-			'Splunk',
-			'Incident Management',
-			'Network Diagnostics',
-			'Cron Automation',
-		],
+		numeral: '02',
+		title: 'Site Reliability & SRE Practices',
+		headline: 'Translating recurring production friction into deterministic runbooks, SLOs, and proactive telemetry.',
+		body: 'Turning customer pain into observable telemetry. Leveraging Datadog, New Relic, synthetic monitors, and distributed tracing so that production incidents are diagnosed in minutes and resolved without repeating manual toil.',
+		tags: ['SLOs & Error Budgets', 'Datadog', 'New Relic APM', 'Incident Response', 'Postmortems'],
+		inverted: false,
+	},
+	{
+		numeral: '03',
+		title: 'DevOps & Container Platforms',
+		headline: 'Containerizing services, wiring pipelines, and architecting resilient infrastructure on Kubernetes and AWS.',
+		body: 'Moving applications into lightweight immutable OCI containers, orchestrating declarative Kubernetes manifests, Helm charts, and building automated GitHub Actions CI/CD pipelines that make deployments non-events.',
+		tags: ['Docker', 'Kubernetes', 'AWS Cloud', 'CI/CD Pipelines', 'Python Automation', 'n8n'],
+		inverted: true, // Inverted bold accent card (Mayank style)
+	},
+	{
+		numeral: '04',
+		title: 'Crisis Leadership & Incident Command',
+		headline: 'Battle-tested composure, structured decision-making, and blameless engineering mentorship.',
+		body: 'Tempered by clearing UPSC CDS thrice, AFCAT five times, and facing multiple 5-day Services Selection Board (SSB) command task evaluations. Bringing military-grade psychological calm, rapid situational reaction (SRT), and clear communication into bridge calls and incident command.',
+		tags: ['Incident Command', 'SSB Vetted', 'Crisis Composure', 'Team Enablement', 'Mentorship'],
+		inverted: false,
+	},
+];
+
+/** Horizontal Career Milestones (Option C) */
+const timeline = [
+	{
+		year: '2016',
+		role: 'B.Tech Engineering Graduation',
+		org: 'Foundational Rigor',
+		note: 'Graduated with a Bachelor of Technology. Developed core analytical thinking, curiosity for complex systems, and the discipline that set the foundation for competitive testing.',
+	},
+	{
+		year: '2016 – 2021',
+		role: 'The Crucible: UPSC CDS (3x) · AFCAT (5x) · SSB',
+		org: 'Armed Forces & National Exam Testing',
+		note: 'Cleared UPSC CDS 3 times, AFCAT 5 times, and Indian Railways once. Attended multiple 5-day Services Selection Board (SSB) interviews — rigorous evaluations of officer-like qualities (OLQs), psychological endurance, rapid decision-making under pressure, and leading teams through complex command tasks.',
+	},
+	{
+		year: 'June 2021',
+		role: 'Application & Database Operations Engineer',
+		org: 'Diksha Technologies · Bharti Airtel',
+		note: 'Entered IT operations on 24x7 mission-critical telecom billing and database nodes. Applied disciplined crisis communication to keep cross-tier engineering and leadership teams coordinated during major network incidents.',
+	},
+	{
+		year: 'Dec 2022',
+		role: 'Drupal DXP Support Engineer',
+		org: 'Acquia',
+		note: 'Supporting enterprise Drupal platforms on Acquia Cloud. 3.5+ years owning Sev-1 escalations, diagnosing 500+ production incidents, profiling database deadlocks, and authoring internal runbooks that reduced MTTR by ~25%.',
+	},
+	{
+		year: 'Now',
+		role: 'DevOps & Platform Engineering',
+		org: 'Platform Architecture & Leadership',
+		note: 'Going deeper into containers, Kubernetes, AWS, and CI/CD pipelines — advancing from fixing platform outages to architecting resilient systems that fail gracefully.',
 	},
 ];
 
@@ -235,7 +243,7 @@ const terminalScenarios = [
 	},
 ];
 
-/** Technical thoughts and blog post placeholders */
+/** Technical thoughts and blog posts */
 const posts = [
 	{
 		title: 'From the Escalation Queue to On-Call SRE',
@@ -280,222 +288,233 @@ const posts = [
 			description={SITE_DESCRIPTION}
 		/>
 	</head>
-	<body class="bg-ink text-ash selection:bg-sand selection:text-ink">
+	<body class="bg-ink text-ash selection:bg-sand selection:text-ink relative">
+		<!-- Analog film grain texture overlay (Mayank style) -->
+		<div class="grain" aria-hidden="true"></div>
+
 		<!-- Subtle ambient atmospheric glow -->
 		<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
 			<div
-				class="absolute -top-40 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-sand/[0.06] blur-[150px]"
+				class="absolute -top-40 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-sand/[0.05] blur-[160px]"
 			>
 			</div>
 			<div
-				class="absolute top-1/2 right-0 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-sand/[0.03] blur-[130px]"
+				class="absolute top-1/2 right-0 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-sand/[0.03] blur-[140px]"
 			>
 			</div>
 		</div>
 
 		<Header />
 
-		<main id="content" class="mx-auto w-full max-w-5xl px-6 py-0">
-			<!-- Hero Section -->
-			<section class="flex flex-col items-start pt-20 pb-20 sm:pt-28 sm:pb-24">
-				<!-- Live status badge -->
-				<div class="flex flex-wrap items-center gap-3">
-					<div
-						class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-300"
-					>
-						<span class="relative flex h-2 w-2">
-							<span
-								class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
-							></span>
-							<span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-						</span>
-						<span>Available for DevOps & Platform Engineering Roles</span>
+		<main id="content" class="w-full">
+			<!-- Option A: Hero Section with Interactive Physics Dot Canvas -->
+			<section class="relative min-h-[92dvh] overflow-hidden border-b border-hair/70 flex flex-col justify-center">
+				<!-- Interactive Canvas Field (Option A) -->
+				<canvas
+					id="field"
+					aria-hidden="true"
+					class="pointer-events-none absolute inset-0 h-full w-full"
+				></canvas>
+
+				<div class="relative mx-auto w-full max-w-5xl px-6 py-20 sm:py-28">
+					<!-- Live status badge -->
+					<div class="flex flex-wrap items-center gap-3">
+						<div
+							class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-300 backdrop-blur-md"
+						>
+							<span class="relative flex h-2 w-2">
+								<span
+									class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
+								></span>
+								<span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+							</span>
+							<span>Available for DevOps & Platform Engineering Roles</span>
+						</div>
+
+						<span class="font-mono text-xs text-dust">|</span>
+
+						<p class="font-mono text-[11px] uppercase tracking-[0.22em] text-sand font-semibold">
+							Acquia DXP Support ➔ DevOps
+						</p>
 					</div>
 
-					<span class="font-mono text-xs text-dust">|</span>
+					<!-- Main Headline -->
+					<h1
+						class="mt-8 max-w-4xl text-4xl font-extrabold leading-[1.0] tracking-[-0.035em] text-chalk sm:text-6xl lg:text-7xl"
+					>
+						From the escalation queue
+						<span class="block text-sand">to the platform.</span>
+					</h1>
 
-					<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
-						Acquia DXP Support Engineer
+					<!-- Subheading with narrative -->
+					<p class="mt-7 max-w-2xl text-lg leading-relaxed text-ash sm:text-xl">
+						I am <strong class="font-bold text-chalk">{PROFILE.name}</strong>. Over 5 years keeping enterprise digital systems resilient — 3.5+ years resolving critical enterprise Drupal DXP escalations at <span class="text-chalk font-semibold">Acquia</span>, preceded by high-volume telecom database operations at <span class="text-chalk font-semibold">Bharti Airtel</span>.
 					</p>
-				</div>
 
-				<!-- Main Headline -->
-				<h1
-					class="mt-8 max-w-3xl text-4xl font-bold leading-[1.02] tracking-[-0.03em] text-chalk sm:text-6xl lg:text-7xl"
-				>
-					From the escalation queue
-					<span class="block text-sand">to the platform.</span>
-				</h1>
+					<p class="mt-3 max-w-2xl text-base leading-relaxed text-dust">
+						Tested in the crucible of armed forces competitive leadership (cleared <strong class="text-ash font-medium">UPSC CDS 3x, AFCAT 5x</strong>, multiple SSBs). Now leveling up from triaging platforms to architecting them with <strong class="text-ash font-medium">Docker, Kubernetes, AWS, automated CI/CD pipelines, and Python</strong>.
+					</p>
 
-				<!-- Subheading with career trajectory -->
-				<p class="mt-6 max-w-2xl text-lg leading-relaxed text-ash sm:text-xl">
-					I am <strong class="font-semibold text-chalk">{PROFILE.name}</strong>. Over 5 years keeping
-					production resilient — 3.5+ years resolving critical enterprise Drupal DXP escalations at
-					<span class="text-chalk font-medium">Acquia</span>, preceded by high-volume telecom database
-					and operations support at <span class="text-chalk font-medium">Bharti Airtel</span>.
-				</p>
-
-				<p class="mt-3 max-w-2xl text-base leading-relaxed text-dust">
-					Now leveling up from triaging platforms to architecting them: <strong class="text-ash font-medium">Docker, Kubernetes, AWS, automated CI/CD pipelines, Python, and n8n workflows</strong> that make system failures rare and recovery automated.
-				</p>
-
-				<!-- Action CTAs + Dynamic Copy Email Button -->
-				<div class="mt-10 flex flex-wrap items-center gap-4">
-					<a
-						href="#journey"
-						class="group inline-flex items-center gap-2 rounded-full bg-chalk px-6 py-3 text-sm font-bold text-ink no-underline transition-all duration-200 hover:bg-sand hover:shadow-lg hover:shadow-sand/10"
-					>
-						Explore Career Journey
-						<span
-							class="transition-transform duration-200 group-hover:translate-x-1"
-							aria-hidden="true">&rarr;</span
+					<!-- Action CTAs + Dynamic Copy Email Button -->
+					<div class="mt-10 flex flex-wrap items-center gap-4">
+						<a
+							href="#capabilities"
+							class="group inline-flex items-center gap-2 rounded-full bg-chalk px-6 py-3.5 text-sm font-bold text-ink no-underline transition-all duration-200 hover:bg-sand hover:shadow-lg hover:shadow-sand/10"
 						>
-					</a>
-
-					<a
-						href="#stack"
-						class="inline-flex items-center rounded-full border border-hair bg-ink-soft px-5 py-3 text-sm font-semibold text-chalk no-underline transition-colors duration-200 hover:border-sand/40 hover:text-sand"
-					>
-						Tech Stack Matrix
-					</a>
-
-					<!-- Interactive Copy Email Button -->
-					<div class="relative">
-						<button
-							id="copy-email-btn"
-							type="button"
-							data-email={SOCIALS.emailRaw}
-							class="group inline-flex items-center gap-2 rounded-full border border-hair bg-ink-raise px-4 py-3 text-sm font-mono text-ash transition-colors duration-200 hover:border-sand/50 hover:text-chalk"
-							title="Click to copy email address"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="16"
-								height="16"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="text-sand transition-transform group-hover:scale-110"
+							What I am Hired For
+							<span
+								class="transition-transform duration-200 group-hover:translate-x-1"
+								aria-hidden="true">&rarr;</span
 							>
-								<rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
-								<path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
-							</svg>
-							<span id="copy-btn-text">Copy Email</span>
-						</button>
+						</a>
 
-						<!-- Tooltip feedback toast -->
-						<div
-							id="copy-toast"
-							role="status"
-							class="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 rounded bg-sand px-2.5 py-1 text-xs font-semibold text-ink opacity-0 shadow-md transition-all duration-200"
+						<a
+							href="#journey"
+							class="inline-flex items-center rounded-full border border-hair bg-ink-soft/80 backdrop-blur-md px-5 py-3.5 text-sm font-semibold text-chalk no-underline transition-colors duration-200 hover:border-sand/40 hover:text-sand"
 						>
-							Copied to clipboard!
+							Career Milestones & Leadership
+						</a>
+
+						<!-- Interactive Copy Email Button -->
+						<div class="relative">
+							<button
+								id="copy-email-btn"
+								type="button"
+								data-email={SOCIALS.emailRaw}
+								class="group inline-flex items-center gap-2 rounded-full border border-hair bg-ink-raise px-4 py-3.5 text-sm font-mono text-ash transition-colors duration-200 hover:border-sand/50 hover:text-chalk"
+								title="Click to copy email address"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="text-sand transition-transform group-hover:scale-110"
+								>
+									<rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+									<path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+								</svg>
+								<span id="copy-btn-text">Copy Email</span>
+							</button>
+
+							<!-- Tooltip feedback toast -->
+							<div
+								id="copy-toast"
+								role="status"
+								class="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 rounded bg-sand px-2.5 py-1 text-xs font-semibold text-ink opacity-0 shadow-md transition-all duration-200"
+							>
+								Copied to clipboard!
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<!-- Quick Impact Metrics Grid -->
-				<div
-					class="mt-16 grid w-full grid-cols-2 gap-4 border-t border-hair/70 pt-10 sm:grid-cols-4 sm:gap-6"
-				>
-					{
-						metrics.map((metric) => (
-							<div class="flex flex-col rounded-lg border border-hair/50 bg-ink-soft/60 p-4 transition-colors duration-200 hover:border-hair">
-								<span class="font-mono text-2xl font-bold tracking-tight text-sand sm:text-3xl">
-									{metric.value}
-								</span>
-								<span class="mt-1 text-sm font-semibold text-chalk">{metric.label}</span>
-								<span class="mt-0.5 text-xs text-dust">{metric.sub}</span>
-							</div>
-						))
-					}
+					<!-- Quick Impact Metrics Grid -->
+					<div
+						class="mt-14 grid w-full grid-cols-2 gap-4 border-t border-hair/70 pt-8 sm:grid-cols-4 sm:gap-6"
+					>
+						{
+							metrics.map((metric) => (
+								<div class="flex flex-col rounded-lg border border-hair/50 bg-ink-soft/70 backdrop-blur-sm p-4 transition-colors duration-200 hover:border-sand/30">
+									<span class="font-mono text-2xl font-bold tracking-tight text-sand sm:text-3xl">
+										{metric.value}
+									</span>
+									<span class="mt-1 text-sm font-semibold text-chalk">{metric.label}</span>
+									<span class="mt-0.5 text-xs text-dust">{metric.sub}</span>
+								</div>
+							))
+						}
+					</div>
 				</div>
 			</section>
 
-			<!-- Interactive Career Journey Grid -->
-			<section id="journey" class="scroll-mt-24 border-t border-hair/60 py-20">
-				<div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
-					<div>
-						<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
-							Operational Track Record
-						</p>
-						<h2 class="mt-1 text-2xl font-bold tracking-tight text-chalk sm:text-3xl">
-							Career Journey & Impact
-						</h2>
-					</div>
-					<p class="font-mono text-xs text-dust">Click cards to expand deep dive details</p>
+			<!-- Option B: Sticky Stacking Capability Cards ("What I am hired for") -->
+			<section id="capabilities" class="relative">
+				<div class="mx-auto max-w-5xl px-6 pt-24 pb-8 sm:pt-32 sm:pb-12">
+					<p class="font-mono text-[11px] uppercase tracking-[0.2em] text-sand">
+						Engineered Core Competencies
+					</p>
+					<h2 class="mt-2 text-3xl font-extrabold tracking-tight text-chalk sm:text-5xl">
+						What I am hired for
+					</h2>
+					<p class="mt-2 text-sm text-dust max-w-lg">
+						Scroll down to explore core capability layers.
+					</p>
 				</div>
 
-				<div class="mt-10 flex flex-col gap-6">
+				<!-- Stacking Card Deck -->
+				<div class="space-y-0">
 					{
-						careerJourney.map((role) => (
+						capabilities.map((cap, idx) => (
 							<article
-								class="career-card group rounded-xl border border-hair bg-ink-soft/90 p-6 transition-all duration-300 hover:border-sand/40 hover:bg-ink-raise/60 sm:p-8"
-								id={`card-${role.id}`}
+								style={`z-index: ${idx + 1}`}
+								class:list={[
+									'stack-card sticky top-0 flex min-h-[90vh] sm:min-h-[100vh] items-center border-t border-hair',
+									cap.inverted ? 'bg-sand text-ink' : 'bg-ink text-ash',
+								]}
 							>
-								<!-- Top metadata bar -->
-								<div class="flex flex-wrap items-center justify-between gap-3">
-									<div class="flex items-center gap-2.5">
+								<div class="mx-auto grid w-full max-w-5xl grid-cols-1 gap-8 px-6 py-16 sm:grid-cols-12 sm:gap-12">
+									<!-- Giant Numeral Watermark -->
+									<div class="sm:col-span-4 flex items-center">
 										<span
 											class:list={[
-												'h-2 w-2 rounded-full',
-												role.current ? 'bg-sand shadow-sm shadow-sand' : 'bg-dust',
+												'font-mono text-[clamp(6rem,14vw,11rem)] font-extrabold select-none leading-none',
+												cap.inverted ? 'text-ink/20' : 'text-chalk/10',
 											]}
-										/>
-										<span class="font-mono text-xs font-semibold tracking-wider uppercase text-sand">
-											{role.company}
+											aria-hidden="true"
+										>
+											{cap.numeral}
 										</span>
 									</div>
-									<span class="rounded border border-hair bg-ink px-2.5 py-0.5 font-mono text-[11px] text-dust">
-										{role.period}
-									</span>
-								</div>
 
-								<!-- Role title -->
-								<h3 class="mt-4 text-xl font-bold tracking-tight text-chalk sm:text-2xl">
-									{role.role}
-								</h3>
-								<p class="mt-2 text-sm font-medium text-ash">{role.headline}</p>
-								<p class="mt-3 text-[15px] leading-relaxed text-dust">{role.summary}</p>
+									<!-- Card Details -->
+									<div class="sm:col-span-8 flex flex-col justify-center">
+										<h3
+											class:list={[
+												'text-2xl sm:text-4xl font-extrabold tracking-tight',
+												cap.inverted ? 'text-ink' : 'text-chalk',
+											]}
+										>
+											{cap.title}
+										</h3>
 
-								<!-- Expandable Deep Dive Section -->
-								<div class="mt-6 border-t border-hair/50 pt-4">
-									<button
-										type="button"
-										class="accordion-toggle flex w-full items-center justify-between text-left font-mono text-xs font-semibold text-chalk transition-colors hover:text-sand"
-										aria-expanded="false"
-										data-target={`details-${role.id}`}
-									>
-										<span>View Key Operational Wins & Architecture Responsibilities</span>
-										<span class="chevron text-sand transition-transform duration-200">↓</span>
-									</button>
+										<p
+											class:list={[
+												'mt-4 text-base sm:text-lg font-semibold leading-relaxed',
+												cap.inverted ? 'text-ink/90' : 'text-chalk/90',
+											]}
+										>
+											{cap.headline}
+										</p>
 
-									<div id={`details-${role.id}`} class="accordion-content mt-4 hidden">
-										<ul class="space-y-2.5">
-											{role.achievements.map((item) => (
-												<li class="flex items-start gap-2.5 text-sm text-ash">
-													<span class="mt-1 text-sand">›</span>
-													<span>{item}</span>
+										<p
+											class:list={[
+												'mt-4 text-sm sm:text-base leading-relaxed',
+												cap.inverted ? 'text-ink/80' : 'text-ash',
+											]}
+										>
+											{cap.body}
+										</p>
+
+										<!-- Monospace Tags -->
+										<ul class="mt-8 flex flex-wrap gap-2">
+											{cap.tags.map((tag) => (
+												<li
+													class:list={[
+														'rounded px-3 py-1 font-mono text-xs tracking-wider uppercase border',
+														cap.inverted
+															? 'border-ink/30 bg-ink/10 text-ink font-semibold'
+															: 'border-hair bg-ink-raise text-dust',
+													]}
+												>
+													{tag}
 												</li>
 											))}
 										</ul>
-
-										<!-- Technology Tags -->
-										<div class="mt-5 pt-3 border-t border-hair/30">
-											<p class="font-mono text-[10px] uppercase tracking-wider text-dust mb-2">
-												Environment & Core Tools
-											</p>
-											<div class="flex flex-wrap gap-1.5">
-												{role.techStack.map((tech) => (
-													<span class="rounded bg-ink px-2 py-0.5 font-mono text-xs text-ash border border-hair">
-														{tech}
-													</span>
-												))}
-											</div>
-										</div>
 									</div>
 								</div>
 							</article>
@@ -504,141 +523,134 @@ const posts = [
 				</div>
 			</section>
 
-			<!-- Filterable DevOps & Tech Stack Matrix -->
-			<section id="stack" class="scroll-mt-24 border-t border-hair/60 py-20">
-				<div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
-					<div>
-						<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
-							Engineered Capabilities
-						</p>
-						<h2 class="mt-1 text-2xl font-bold tracking-tight text-chalk sm:text-3xl">
-							DevOps & Tech Stack Matrix
-						</h2>
+			<!-- Option C: Horizontal Career Rail with Giant Accent Years & SSB Leadership -->
+			<section id="journey" class="relative overflow-hidden border-t border-hair/70 py-24 sm:py-32">
+				<div class="mx-auto max-w-5xl px-6 mb-12">
+					<div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+						<div>
+							<p class="font-mono text-[11px] uppercase tracking-[0.2em] text-sand">
+								Milestones & Leadership
+							</p>
+							<h2 class="mt-1 text-3xl font-extrabold tracking-tight text-chalk sm:text-5xl">
+								From the testing crucible to cloud platforms
+							</h2>
+						</div>
+						<span class="font-mono text-xs text-dust hidden sm:inline">
+							Scroll or drag horizontally &rarr;
+						</span>
 					</div>
-					<p class="text-sm text-dust">Filter by discipline</p>
+					<p class="mt-3 max-w-2xl text-base leading-relaxed text-ash">
+						Nobody plans an engineering career on the escalation queue or in military screening boards. It turned out to be the most rigorous classroom for high-pressure incident command.
+					</p>
 				</div>
 
-				<!-- Category Filter Pills -->
-				<div class="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Tech categories">
+				<!-- Horizontal Scrolling Track -->
+				<div
+					id="pan-track"
+					class="flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 no-scrollbar md:gap-8 lg:px-12"
+				>
 					{
-						stackCategories.map((cat, idx) => (
-							<button
-								type="button"
-								class:list={[
-									'filter-pill rounded-full px-4 py-1.5 font-mono text-xs transition-all duration-200',
-									idx === 0
-										? 'bg-sand font-bold text-ink shadow-sm'
-										: 'border border-hair bg-ink-soft text-dust hover:border-hair/80 hover:text-chalk',
-								]}
-								data-category={cat.id}
-							>
-								{cat.label}
-							</button>
-						))
-					}
-				</div>
-
-				<!-- Grid of dynamic stack badges -->
-				<div id="stack-grid" class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{
-						techStack.map((item) => (
-							<div
-								class="stack-card flex flex-col justify-between rounded-xl border border-hair bg-ink-soft p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-sand/40 hover:bg-ink-raise"
-								data-category={item.category}
-							>
+						timeline.map((item) => (
+							<article class="w-[85vw] shrink-0 snap-start rounded-xl border border-hair bg-ink-soft p-6 transition-all hover:border-sand/40 sm:w-[50vw] lg:w-[32vw] flex flex-col justify-between">
 								<div>
-									<div class="flex items-center justify-between gap-2">
-										<h3 class="text-lg font-bold text-chalk">{item.name}</h3>
-										<span class="rounded bg-ink px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-sand border border-hair">
-											{item.status}
-										</span>
-									</div>
-									<p class="mt-1 font-mono text-[11px] uppercase tracking-wide text-dust">
+									<!-- Giant Accent Year -->
+									<span class="block font-mono text-4xl sm:text-5xl font-extrabold tracking-tight text-sand">
+										{item.year}
+									</span>
+
+									<h3 class="mt-4 text-xl font-bold tracking-tight text-chalk">
 										{item.role}
+									</h3>
+
+									<p class="mt-1 font-mono text-xs text-sand font-medium uppercase tracking-wider">
+										{item.org}
 									</p>
-									<p class="mt-3 text-sm leading-relaxed text-ash">{item.description}</p>
+
+									<p class="mt-4 text-sm leading-relaxed text-ash">
+										{item.note}
+									</p>
 								</div>
-								<div class="mt-4 pt-3 border-t border-hair/40 flex items-center justify-between">
-									<span class="font-mono text-[11px] text-sand">{item.tag}</span>
-									<span class="text-xs text-dust">Verified in production</span>
+
+								<div class="mt-6 pt-3 border-t border-hair/40 flex items-center justify-between text-[11px] font-mono text-dust">
+									<span>Milestone</span>
+									<span class="text-sand">Verified</span>
 								</div>
-							</div>
+							</article>
 						))
 					}
+				</div>
+
+				<!-- Horizontal Progress Indicator Bar -->
+				<div class="mx-auto mt-8 max-w-5xl px-6">
+					<div class="h-1 w-full rounded-full bg-hair overflow-hidden">
+						<div
+							id="pan-progress"
+							class="h-full w-1/4 rounded-full bg-sand transition-all duration-150"
+						>
+						</div>
+					</div>
 				</div>
 			</section>
 
-			<!-- Interactive DevOps Terminal / Runbook Simulator -->
-			<section id="terminal" class="scroll-mt-24 border-t border-hair/60 py-20">
-				<div class="flex flex-col gap-2">
-					<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
-						Platform Automation In Action
-					</p>
-					<h2 class="text-2xl font-bold tracking-tight text-chalk sm:text-3xl">
-						Interactive Runbook Terminal
-					</h2>
-					<p class="max-w-xl text-sm leading-relaxed text-ash">
-						Click the script tabs to simulate real-world automated diagnostic runs, incident triage routines, and webhook event orchestrations.
-					</p>
-				</div>
-
-				<!-- Terminal Container -->
-				<div class="mt-8 overflow-hidden rounded-xl border border-hair bg-[#0d0d11] shadow-2xl">
-					<!-- Terminal Top Bar -->
-					<div class="flex flex-wrap items-center justify-between border-b border-hair/80 bg-ink px-4 py-3">
-						<div class="flex items-center gap-2">
-							<span class="h-3 w-3 rounded-full bg-red-500/80"></span>
-							<span class="h-3 w-3 rounded-full bg-yellow-500/80"></span>
-							<span class="h-3 w-3 rounded-full bg-green-500/80"></span>
-							<span class="ml-2 font-mono text-xs text-dust">keshav@platform-node-01:~</span>
+			<!-- Filterable DevOps & Tech Stack Matrix -->
+			<section id="stack" class="scroll-mt-24 border-t border-hair/60 py-20">
+				<div class="mx-auto max-w-5xl px-6">
+					<div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+						<div>
+							<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
+								Engineered Capabilities
+							</p>
+							<h2 class="mt-1 text-2xl font-bold tracking-tight text-chalk sm:text-3xl">
+								DevOps & Tech Stack Matrix
+							</h2>
 						</div>
-
-						<!-- Terminal Scenario Tabs -->
-						<div class="flex items-center gap-1.5 pt-2 sm:pt-0">
-							{
-								terminalScenarios.map((scen, idx) => (
-									<button
-										type="button"
-										class:list={[
-											'terminal-tab rounded px-2.5 py-1 font-mono text-xs transition-colors',
-											idx === 0
-												? 'bg-hair text-chalk font-semibold'
-												: 'text-dust hover:text-chalk hover:bg-hair/50',
-										]}
-										data-scenario={scen.id}
-									>
-										{scen.title}
-									</button>
-								))
-							}
-						</div>
+						<p class="text-sm text-dust">Filter by discipline</p>
 					</div>
 
-					<!-- Terminal Content Panes -->
-					<div class="p-5 font-mono text-xs leading-relaxed sm:text-[13px]">
+					<!-- Category Filter Pills -->
+					<div class="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Tech categories">
 						{
-							terminalScenarios.map((scen, idx) => (
-								<div
-									id={`terminal-pane-${scen.id}`}
-									class:list={['space-y-2', idx === 0 ? 'block' : 'hidden']}
+							stackCategories.map((cat, idx) => (
+								<button
+									type="button"
+									class:list={[
+										'filter-pill rounded-full px-4 py-1.5 font-mono text-xs transition-all duration-200',
+										idx === 0
+											? 'bg-sand font-bold text-ink shadow-sm'
+											: 'border border-hair bg-ink-soft text-dust hover:border-hair/80 hover:text-chalk',
+									]}
+									data-category={cat.id}
 								>
-									<p class="text-dust pb-1 italic border-b border-hair/40 mb-3"># {scen.desc}</p>
-									{scen.output.map((line) => (
-										<div class="flex items-start gap-2">
-											{line.type === 'cmd' && (
-												<span class="text-sand font-bold select-none">$</span>
-											)}
-											{line.type === 'cmd' && (
-												<span class="text-chalk font-semibold">{line.text}</span>
-											)}
-											{line.type === 'info' && <span class="text-ash">{line.text}</span>}
-											{line.type === 'success' && <span class="text-emerald-400">{line.text}</span>}
-											{line.type === 'warning' && <span class="text-amber-300">{line.text}</span>}
-											{line.type === 'highlight' && (
-												<span class="text-sand font-bold">{line.text}</span>
-											)}
+									{cat.label}
+								</button>
+							))
+						}
+					</div>
+
+					<!-- Grid of dynamic stack badges -->
+					<div id="stack-grid" class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{
+							techStack.map((item) => (
+								<div
+									class="stack-card flex flex-col justify-between rounded-xl border border-hair bg-ink-soft p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-sand/40 hover:bg-ink-raise"
+									data-category={item.category}
+								>
+									<div>
+										<div class="flex items-center justify-between gap-2">
+											<h3 class="text-lg font-bold text-chalk">{item.name}</h3>
+											<span class="rounded bg-ink px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-sand border border-hair">
+												{item.status}
+											</span>
 										</div>
-									))}
+										<p class="mt-1 font-mono text-[11px] uppercase tracking-wide text-dust">
+											{item.role}
+										</p>
+										<p class="mt-3 text-sm leading-relaxed text-ash">{item.description}</p>
+									</div>
+									<div class="mt-4 pt-3 border-t border-hair/40 flex items-center justify-between">
+										<span class="font-mono text-[11px] text-sand">{item.tag}</span>
+										<span class="text-xs text-dust">Verified in production</span>
+									</div>
 								</div>
 							))
 						}
@@ -646,124 +658,343 @@ const posts = [
 				</div>
 			</section>
 
+			<!-- Interactive DevOps Terminal / Runbook Simulator -->
+			<section id="terminal" class="scroll-mt-24 border-t border-hair/60 py-20">
+				<div class="mx-auto max-w-5xl px-6">
+					<div class="flex flex-col gap-2">
+						<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
+							Platform Automation In Action
+						</p>
+						<h2 class="text-2xl font-bold tracking-tight text-chalk sm:text-3xl">
+							Interactive Runbook Terminal
+						</h2>
+						<p class="max-w-xl text-sm leading-relaxed text-ash">
+							Click the script tabs to simulate real-world automated diagnostic runs, incident triage routines, and webhook event orchestrations.
+						</p>
+					</div>
+
+					<!-- Terminal Container -->
+					<div class="mt-8 overflow-hidden rounded-xl border border-hair bg-[#0d0d11] shadow-2xl">
+						<!-- Terminal Top Bar -->
+						<div class="flex flex-wrap items-center justify-between border-b border-hair/80 bg-ink px-4 py-3">
+							<div class="flex items-center gap-2">
+								<span class="h-3 w-3 rounded-full bg-red-500/80"></span>
+								<span class="h-3 w-3 rounded-full bg-yellow-500/80"></span>
+								<span class="h-3 w-3 rounded-full bg-green-500/80"></span>
+								<span class="ml-2 font-mono text-xs text-dust">keshav@platform-node-01:~</span>
+							</div>
+
+							<!-- Terminal Scenario Tabs -->
+							<div class="flex items-center gap-1.5 pt-2 sm:pt-0">
+								{
+									terminalScenarios.map((scen, idx) => (
+										<button
+											type="button"
+											class:list={[
+												'terminal-tab rounded px-2.5 py-1 font-mono text-xs transition-colors',
+												idx === 0
+													? 'bg-hair text-chalk font-semibold'
+													: 'text-dust hover:text-chalk hover:bg-hair/50',
+											]}
+											data-scenario={scen.id}
+										>
+											{scen.title}
+										</button>
+									))
+								}
+							</div>
+						</div>
+
+						<!-- Terminal Content Panes -->
+						<div class="p-5 font-mono text-xs leading-relaxed sm:text-[13px]">
+							{
+								terminalScenarios.map((scen, idx) => (
+									<div
+										id={`terminal-pane-${scen.id}`}
+										class:list={['space-y-2', idx === 0 ? 'block' : 'hidden']}
+									>
+										<p class="text-dust pb-1 italic border-b border-hair/40 mb-3"># {scen.desc}</p>
+										{scen.output.map((line) => (
+											<div class="flex items-start gap-2">
+												{line.type === 'cmd' && (
+													<span class="text-sand font-bold select-none">$</span>
+												)}
+												{line.type === 'cmd' && (
+													<span class="text-chalk font-semibold">{line.text}</span>
+												)}
+												{line.type === 'info' && <span class="text-ash">{line.text}</span>}
+												{line.type === 'success' && <span class="text-emerald-400">{line.text}</span>}
+												{line.type === 'warning' && <span class="text-amber-300">{line.text}</span>}
+												{line.type === 'highlight' && (
+													<span class="text-sand font-bold">{line.text}</span>
+												)}
+											</div>
+										))}
+									</div>
+								))
+							}
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<!-- Leadership Philosophy -->
 			<section id="philosophy" class="scroll-mt-24 border-t border-hair/60 py-20">
-				<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
-					Engineering Leadership
-				</p>
-				<h2 class="mt-1 text-2xl font-bold tracking-tight text-chalk sm:text-3xl">
-					Operational Philosophy
-				</h2>
+				<div class="mx-auto max-w-5xl px-6">
+					<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
+						Engineering Leadership & Composure
+					</p>
+					<h2 class="mt-1 text-2xl font-bold tracking-tight text-chalk sm:text-3xl">
+						Operational Philosophy
+					</h2>
 
-				<blockquote class="mt-8 border-l-2 border-sand pl-6 sm:pl-8">
-					<p class="max-w-2xl text-xl font-bold leading-snug tracking-[-0.02em] text-chalk sm:text-2xl">
-						"Every outage is a conversation between a distributed system and the engineers who keep it alive."
-					</p>
-				</blockquote>
+					<blockquote class="mt-8 border-l-2 border-sand pl-6 sm:pl-8">
+						<p class="max-w-2xl text-xl font-bold leading-snug tracking-[-0.02em] text-chalk sm:text-2xl">
+							"Every outage is a conversation between a distributed system and the engineers who keep it alive."
+						</p>
+					</blockquote>
 
-				<div class="mt-8 grid max-w-3xl gap-6 text-[15px] leading-relaxed text-ash sm:grid-cols-2">
-					<p>
-						Years in the escalation queue taught me to listen to both sides of that conversation — to
-						transform customer stress and recurring Sev-1 panics into deterministic runbooks, automated telemetry, and blameless post-mortems.
-					</p>
-					<p>
-						The leadership principle I bring to DevOps is simple: empower teams with reproducible container infrastructure, declarative deployments, and automation so that production incidents become rare, predictable, and quiet.
-					</p>
+					<div class="mt-8 grid max-w-3xl gap-6 text-[15px] leading-relaxed text-ash sm:grid-cols-2">
+						<p>
+							Years facing intense competitive examinations and Services Selection Board command tasks taught me that panic is a choice. When systems fail under high-traffic load, finger-pointing achieves nothing.
+						</p>
+						<p>
+							The leadership mindset I bring to DevOps is calm situational command: empower teams with reproducible container infrastructure, declarative deployments, automated runbooks, and psychological safety so production outages remain rare, predictable, and quiet.
+						</p>
+					</div>
 				</div>
 			</section>
 
 			<!-- Writing & Technical Thoughts -->
 			<section id="writing" class="scroll-mt-24 border-t border-hair/60 py-20">
-				<div class="flex items-baseline justify-between gap-4">
-					<div>
-						<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
-							Knowledge & Runbooks
-						</p>
-						<h2 class="mt-1 text-2xl font-bold tracking-tight text-chalk sm:text-3xl">
-							Leadership & Technical Writing
-						</h2>
+				<div class="mx-auto max-w-5xl px-6">
+					<div class="flex items-baseline justify-between gap-4">
+						<div>
+							<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
+								Knowledge & Runbooks
+							</p>
+							<h2 class="mt-1 text-2xl font-bold tracking-tight text-chalk sm:text-3xl">
+								Leadership & Technical Writing
+							</h2>
+						</div>
+						<a
+							href="/blog"
+							class="font-mono text-xs uppercase tracking-[0.14em] text-ash no-underline transition-colors duration-200 hover:text-sand"
+						>
+							All articles &rarr;
+						</a>
 					</div>
-					<a
-						href="/blog"
-						class="font-mono text-xs uppercase tracking-[0.14em] text-ash no-underline transition-colors duration-200 hover:text-sand"
-					>
-						All articles &rarr;
-					</a>
-				</div>
 
-				<ul class="mt-10 flex flex-col">
-					{
-						posts.map((post) => (
-							<li class="border-t border-hair/60 first:border-t-0">
-								<a
-									href={`/blog/${post.slug}`}
-									class="group flex flex-col gap-2 py-6 no-underline sm:flex-row sm:items-baseline sm:justify-between sm:gap-8 transition-colors"
-								>
-									<div class="max-w-2xl">
-										<div class="flex items-center gap-3">
-											<span class="rounded bg-ink-raise px-2 py-0.5 font-mono text-[10px] uppercase text-sand border border-hair">
-												{post.category}
-											</span>
-											<span class="font-mono text-[11px] text-dust">{post.readTime}</span>
+					<ul class="mt-10 flex flex-col">
+						{
+							posts.map((post) => (
+								<li class="border-t border-hair/60 first:border-t-0">
+									<a
+										href={`/blog/${post.slug}`}
+										class="group flex flex-col gap-2 py-6 no-underline sm:flex-row sm:items-baseline sm:justify-between sm:gap-8 transition-colors"
+									>
+										<div class="max-w-2xl">
+											<div class="flex items-center gap-3">
+												<span class="rounded bg-ink-raise px-2 py-0.5 font-mono text-[10px] uppercase text-sand border border-hair">
+													{post.category}
+												</span>
+												<span class="font-mono text-[11px] text-dust">{post.readTime}</span>
+											</div>
+											<h3 class="mt-2 text-lg font-bold tracking-tight text-chalk transition-colors duration-200 group-hover:text-sand">
+												{post.title}
+											</h3>
+											<p class="mt-1.5 text-sm leading-relaxed text-ash">{post.note}</p>
 										</div>
-										<h3 class="mt-2 text-lg font-bold tracking-tight text-chalk transition-colors duration-200 group-hover:text-sand">
-											{post.title}
-										</h3>
-										<p class="mt-1.5 text-sm leading-relaxed text-ash">{post.note}</p>
-									</div>
-									<div class="flex shrink-0 items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-dust">
-										<span>{post.date}</span>
-										<span class="text-sand group-hover:translate-x-1 transition-transform">&rarr;</span>
-									</div>
-								</a>
-							</li>
-						))
-					}
-				</ul>
+										<div class="flex shrink-0 items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-dust">
+											<span>{post.date}</span>
+											<span class="text-sand group-hover:translate-x-1 transition-transform">&rarr;</span>
+										</div>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
 			</section>
 
-			<!-- Say Hello / Contact Section -->
-			<section id="contact" class="scroll-mt-24 border-t border-hair/60 py-20">
-				<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">Connect</p>
-				<h2 class="mt-1 text-2xl font-bold tracking-tight text-chalk sm:text-4xl">
-					Let&rsquo;s build resilient systems together.
-				</h2>
-				<p class="mt-4 max-w-xl text-base leading-relaxed text-ash">
-					Open to discussions regarding DevOps engineer roles, Kubernetes platform engineering, site reliability leadership, and automated infrastructure.
-				</p>
+			<!-- Say Hello / Contact Section (Mayank Impact Style) -->
+			<section id="contact" class="scroll-mt-24 border-t border-hair/60 py-24 sm:py-32">
+				<div class="mx-auto max-w-5xl px-6">
+					<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">Connect</p>
+					<h2 class="mt-3 text-3xl font-extrabold tracking-tight text-chalk sm:text-6xl">
+						Let&rsquo;s build resilient systems together.
+					</h2>
+					<p class="mt-6 max-w-xl text-lg leading-relaxed text-ash">
+						Open to conversations about DevOps engineering, Kubernetes platform architecture, SRE leadership, and automated infrastructure.
+					</p>
 
-				<div class="mt-8 flex flex-wrap items-center gap-4">
-					<a
-						href={SOCIALS.email}
-						class="inline-flex items-center gap-2 rounded-full bg-sand px-6 py-3 text-sm font-bold text-ink no-underline transition-colors hover:bg-sand-soft"
-					>
-						Send an Email
-					</a>
-					<a
-						href={SOCIALS.linkedin}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="inline-flex items-center gap-2 rounded-full border border-hair bg-ink-soft px-5 py-3 text-sm font-semibold text-chalk no-underline transition-colors hover:border-sand/40 hover:text-sand"
-					>
-						Connect on LinkedIn
-					</a>
-					<a
-						href={SOCIALS.github}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="inline-flex items-center gap-2 rounded-full border border-hair bg-ink-soft px-5 py-3 text-sm font-semibold text-chalk no-underline transition-colors hover:border-sand/40 hover:text-sand"
-					>
-						GitHub Profile
-					</a>
+					<div class="mt-10 flex flex-wrap items-center gap-4">
+						<a
+							href={SOCIALS.email}
+							class="inline-flex items-center gap-2 rounded-full bg-sand px-7 py-3.5 text-sm font-bold text-ink no-underline transition-colors hover:bg-sand-soft"
+						>
+							Send an Email &rarr;
+						</a>
+						<a
+							href={SOCIALS.linkedin}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 rounded-full border border-hair bg-ink-soft px-6 py-3.5 text-sm font-semibold text-chalk no-underline transition-colors hover:border-sand/40 hover:text-sand"
+						>
+							LinkedIn
+						</a>
+						<a
+							href={SOCIALS.github}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 rounded-full border border-hair bg-ink-soft px-6 py-3.5 text-sm font-semibold text-chalk no-underline transition-colors hover:border-sand/40 hover:text-sand"
+						>
+							GitHub
+						</a>
+					</div>
+
+					<div class="mt-16 pt-8 border-t border-hair/40 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-dust font-mono gap-4">
+						<p>Personal portfolio & leadership thoughts. Independent of employer.</p>
+						<p>&copy; {new Date().getFullYear()} Keshav Bhardwaj</p>
+					</div>
 				</div>
 			</section>
 		</main>
 
 		<Footer />
 
-		<!-- Client-Side Interactivity Script -->
+		<!-- Option A: Hero Physics Canvas Engine & Interactive Scripts -->
 		<script is:inline>
-			// 1. Copy Email Interaction with Tooltip
+			// --- 1. Option A: Hero Physics Particle/Dot Field ---
+			(function () {
+				const canvas = document.getElementById('field');
+				if (!canvas) return;
+
+				const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				const ctx = canvas.getContext('2d');
+				if (!ctx) return;
+
+				let particles = [];
+				let dpr = 1;
+				let mouse = { x: -9999, y: -9999 };
+				let animFrameId = 0;
+
+				const initGrid = () => {
+					const rect = canvas.getBoundingClientRect();
+					dpr = Math.min(window.devicePixelRatio || 1, 2);
+					canvas.width = Math.round(rect.width * dpr);
+					canvas.height = Math.round(rect.height * dpr);
+					ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+					particles = [];
+					const spacing = 28;
+					for (let y = 20; y < rect.height; y += spacing) {
+						for (let x = 20; x < rect.width; x += spacing) {
+							particles.push({
+								x: x,
+								y: y,
+								ox: x,
+								oy: y,
+								vx: 0,
+								vy: 0,
+							});
+						}
+					}
+				};
+
+				const render = () => {
+					const rect = canvas.getBoundingClientRect();
+					ctx.clearRect(0, 0, rect.width, rect.height);
+
+					const accentColor = '#e8b17a';
+					const dotColor = '#ededf0';
+
+					for (let i = 0; i < particles.length; i++) {
+						const pt = particles[i];
+						const dx = pt.x - mouse.x;
+						const dy = pt.y - mouse.y;
+						const dist = Math.hypot(dx, dy);
+
+						if (dist < 140 && !reducedMotion) {
+							const force = Math.pow(1 - dist / 140, 2) * 32;
+							pt.vx += (dx / (dist || 1)) * force * 0.08;
+							pt.vy += (dy / (dist || 1)) * force * 0.08;
+						}
+
+						// Spring restitution back to origin
+						pt.vx += (pt.ox - pt.x) * 0.045;
+						pt.vy += (pt.oy - pt.y) * 0.045;
+						pt.vx *= 0.86;
+						pt.vy *= 0.86;
+						pt.x += pt.vx;
+						pt.y += pt.vy;
+
+						const near = dist < 140;
+						const rad = near ? 1.2 + (1 - dist / 140) * 1.8 : 1.1;
+
+						ctx.beginPath();
+						ctx.arc(pt.x, pt.y, rad, 0, Math.PI * 2);
+						ctx.fillStyle = near ? accentColor : dotColor;
+						ctx.globalAlpha = near ? 0.4 + (1 - dist / 140) * 0.5 : 0.12;
+						ctx.fill();
+					}
+
+					animFrameId = requestAnimationFrame(render);
+				};
+
+				const onMouseMove = (e) => {
+					const rect = canvas.getBoundingClientRect();
+					mouse.x = e.clientX - rect.left;
+					mouse.y = e.clientY - rect.top;
+				};
+
+				const onMouseLeave = () => {
+					mouse.x = -9999;
+					mouse.y = -9999;
+				};
+
+				initGrid();
+
+				if (reducedMotion || window.matchMedia('(pointer: coarse)').matches) {
+					// Static single-pass render for coarse pointer or reduced motion
+					const rect = canvas.getBoundingClientRect();
+					ctx.clearRect(0, 0, rect.width, rect.height);
+					ctx.fillStyle = '#ededf0';
+					ctx.globalAlpha = 0.12;
+					for (let i = 0; i < particles.length; i++) {
+						ctx.beginPath();
+						ctx.arc(particles[i].ox, particles[i].oy, 1.1, 0, Math.PI * 2);
+						ctx.fill();
+					}
+				} else {
+					window.addEventListener('pointermove', onMouseMove, { passive: true });
+					window.addEventListener('pointerleave', onMouseLeave);
+					animFrameId = requestAnimationFrame(render);
+				}
+
+				let resizeTimer;
+				window.addEventListener('resize', () => {
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(initGrid, 150);
+				});
+			})();
+
+			// --- 2. Option C: Horizontal Track Scroll Progress ---
+			(function () {
+				const track = document.getElementById('pan-track');
+				const progress = document.getElementById('pan-progress');
+				if (track && progress) {
+					track.addEventListener('scroll', () => {
+						const maxScroll = track.scrollWidth - track.clientWidth;
+						if (maxScroll > 0) {
+							const percent = Math.min(Math.max((track.scrollLeft / maxScroll) * 100, 15), 100);
+							progress.style.width = percent + '%';
+						}
+					});
+				}
+			})();
+
+			// --- 3. Copy Email Interaction ---
 			const copyBtn = document.getElementById('copy-email-btn');
 			const copyToast = document.getElementById('copy-toast');
 			const copyBtnText = document.getElementById('copy-btn-text');
@@ -788,29 +1019,7 @@ const posts = [
 				});
 			}
 
-			// 2. Interactive Career Accordion
-			document.querySelectorAll('.accordion-toggle').forEach((btn) => {
-				btn.addEventListener('click', () => {
-					const targetId = btn.getAttribute('data-target');
-					const targetContent = document.getElementById(targetId);
-					const chevron = btn.querySelector('.chevron');
-					const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-
-					if (targetContent) {
-						if (isExpanded) {
-							targetContent.classList.add('hidden');
-							btn.setAttribute('aria-expanded', 'false');
-							if (chevron) chevron.textContent = '↓';
-						} else {
-							targetContent.classList.remove('hidden');
-							btn.setAttribute('aria-expanded', 'true');
-							if (chevron) chevron.textContent = '↑';
-						}
-					}
-				});
-			});
-
-			// 3. Dynamic Tech Stack Matrix Category Filtering
+			// --- 4. Dynamic Tech Stack Matrix Category Filtering ---
 			const filterPills = document.querySelectorAll('.filter-pill');
 			const stackCards = document.querySelectorAll('.stack-card');
 
@@ -838,13 +1047,12 @@ const posts = [
 				});
 			});
 
-			// 4. Interactive DevOps Terminal Simulator Tabs
+			// --- 5. Interactive DevOps Terminal Simulator Tabs ---
 			const terminalTabs = document.querySelectorAll('.terminal-tab');
 			terminalTabs.forEach((tab) => {
 				tab.addEventListener('click', () => {
 					const scenarioId = tab.getAttribute('data-scenario');
 
-					// Update tab styles
 					terminalTabs.forEach((t) => {
 						t.classList.remove('bg-hair', 'text-chalk', 'font-semibold');
 						t.classList.add('text-dust');
@@ -852,7 +1060,6 @@ const posts = [
 					tab.classList.remove('text-dust');
 					tab.classList.add('bg-hair', 'text-chalk', 'font-semibold');
 
-					// Show corresponding terminal output pane
 					document.querySelectorAll('[id^="terminal-pane-"]').forEach((pane) => {
 						pane.classList.add('hidden');
 						pane.classList.remove('block');
@@ -867,4 +1074,5 @@ const posts = [
 		</script>
 	</body>
 </html>
+
 

@@ -18,9 +18,18 @@ export const PROFILE = {
 	title: 'Drupal DXP Support Engineer & DevOps Practitioner',
 	company: 'Acquia',
 	location: 'India',
-	experienceYears: '5+',
+	experienceYears: '5+ in IT Operations & Escalations',
+	graduationYear: '2016',
+	itStartYear: 'June 2021',
 	acquiaExperience: '3.5+ years (Dec 2022 – Present)',
 	dikshaExperience: '1.5 years (June 2021 – Dec 2022)',
 	primaryFocus: 'Kubernetes, Docker, AWS, CI/CD, Python, n8n, Site Reliability',
+	leadershipMilestones: [
+		'Cleared UPSC CDS (Combined Defence Services) thrice',
+		'Cleared AFCAT (Air Force Common Admission Test) 5 times',
+		'Cleared Indian Railways examination once',
+		'Attended multiple 5-day Services Selection Board (SSB) leadership evaluations',
+	],
 };
+
 
