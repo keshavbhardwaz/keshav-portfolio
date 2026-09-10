@@ -47,6 +47,65 @@ const { title, description, image = FallbackImage } = Astro.props;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image.src, Astro.url)} />
+<meta property="og:site_name" content={SITE_TITLE} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={Astro.url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<!-- Theme & SEO Metadata -->
+<meta name="theme-color" content="#0b0b0d" />
+<meta name="color-scheme" content="dark" />
+<meta name="author" content={SITE_TITLE} />
+<meta name="robots" content="index, follow" />
+
+<!-- Structured Data (JSON-LD) for Lighthouse SEO & Knowledge Graph -->
+<script
+	type="application/ld+json"
+	is:inline
+	set:html={JSON.stringify({
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'Person',
+				'@id': 'https://keshavbhardwaj.dev/#person',
+				name: 'Keshav Bhardwaj',
+				jobTitle: 'Drupal DXP Support Engineer & DevOps Practitioner',
+				worksFor: {
+					'@type': 'Organization',
+					name: 'Acquia',
+				},
+				url: 'https://keshavbhardwaj.dev',
+				sameAs: [
+					'https://github.com/keshavbhardwaz',
+					'https://www.linkedin.com/in/keshavbhardwaz/',
+				],
+				knowsAbout: [
+					'DevOps',
+					'Docker',
+					'Kubernetes',
+					'Amazon Web Services (AWS)',
+					'CI/CD Pipelines',
+					'Drupal DXP',
+					'Site Reliability Engineering',
+					'Python',
+					'n8n Workflow Automation',
+					'Linux Operations',
+				],
+			},
+			{
+				'@type': 'WebSite',
+				'@id': 'https://keshavbhardwaj.dev/#website',
+				url: 'https://keshavbhardwaj.dev',
+				name: 'Keshav Bhardwaj Portfolio & Platform',
+				publisher: {
+					'@id': 'https://keshavbhardwaj.dev/#person',
+				},
+			},
+		],
+	})}
+/>
+

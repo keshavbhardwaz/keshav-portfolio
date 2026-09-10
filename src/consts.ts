@@ -2,11 +2,25 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'Keshav Bhardwaj';
+export const SITE_TAGLINE = 'DXP Support Engineer ➔ DevOps & Platform Architect';
 export const SITE_DESCRIPTION =
-	'DXP Support Engineer at Acquia moving deeper into DevOps and engineering leadership. Writing about Drupal, Kubernetes, and site reliability.';
+	'Portfolio & engineering leadership platform of Keshav Bhardwaj. 5+ years keeping production resilient — from enterprise Drupal DXP escalations at Acquia to Kubernetes, AWS cloud infrastructure, CI/CD pipelines, and workflow automation.';
 
 export const SOCIALS = {
 	github: 'https://github.com/keshavbhardwaz',
 	linkedin: 'https://www.linkedin.com/in/keshavbhardwaz/',
-	email: 'mailto:hello@example.com',
+	email: 'mailto:keshavec23@gmail.com',
+	emailRaw: 'keshavec23@gmail.com',
 };
+
+export const PROFILE = {
+	name: 'Keshav Bhardwaj',
+	title: 'Drupal DXP Support Engineer & DevOps Practitioner',
+	company: 'Acquia',
+	location: 'India',
+	experienceYears: '5+',
+	acquiaExperience: '3.5+ years (Dec 2022 – Present)',
+	dikshaExperience: '1.5 years (June 2021 – Dec 2022)',
+	primaryFocus: 'Kubernetes, Docker, AWS, CI/CD, Python, n8n, Site Reliability',
+};
+
