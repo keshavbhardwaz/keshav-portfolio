@@ -1,0 +1,94 @@
+---
+const achievementsFolder = 'https://drive.google.com/drive/folders/133qc-Wl9_FxPo76VXPPJGIhgqZ_VJZaN?usp=drive_link';
+const gallery = [
+  { src: '/images/achievements/customer-feedback.jpg', title: 'The voice of our customers', alt: 'Customer feedback slide including recognition for Keshav’s responsiveness, investigation, and regular follow-up.', caption: 'Customer feedback highlighting my responsiveness, detailed investigations, and consistent updates throughout a case.' },
+  { src: '/images/achievements/team-recognition.png', title: 'Quality support. A stronger team.', alt: 'Team shoutout recognizing Keshav as Q3 CSAT champion and acknowledging his dedication to training new team members.', caption: 'A team shoutout recognizing customer support quality alongside my commitment to helping new colleagues grow.' },
+];
+const feedback = [
+  { theme: 'Follow-through', quote: 'You have done excellent followup with us and newrelic team to resolve the issue.', context: 'Customer survey · cross-team troubleshooting' },
+  { theme: 'Clear answers', quote: 'Quick response. Answered the questions.', context: 'Customer survey · July 2023' },
+];
+---
+
+<section id="impact" class="scroll-mt-24 border-t border-hair/60 py-20" aria-labelledby="impact-title">
+  <p class="mb-4 font-mono text-xs uppercase tracking-widest text-sand">Achievements & customer impact</p>
+  <h2 id="impact-title" class="max-w-3xl text-3xl font-bold tracking-tight text-chalk sm:text-5xl">Earn trust. Share what you know.</h2>
+  <p class="mt-6 max-w-2xl text-base leading-relaxed text-ash">The most meaningful recognition comes from customers who feel heard—and colleagues who feel ready to handle their next difficult case.</p>
+  <div class="mt-10 grid gap-5 md:grid-cols-3">
+    <article class="rounded-2xl border border-sand/30 bg-sand/5 p-7 md:col-span-1">
+      <span class="font-mono text-xs uppercase tracking-widest text-sand">Internal recognition</span>
+      <h3 class="mt-5 text-2xl font-bold text-chalk">Q3 CSAT champion</h3>
+      <p class="mt-4 text-sm leading-relaxed text-ash">Recognized for customer support quality and dedication to training new team members.</p>
+      <p class="mt-6 border-t border-hair pt-4 text-sm text-sand">4.5 rating · 10% response rate</p>
+      <p class="mt-2 text-xs leading-relaxed text-ash">Shoutout in Townhall for highest CSAT</p>
+    </article>
+    {feedback.map(item => (
+      <figure class="m-0 flex flex-col rounded-2xl border border-hair bg-ink-soft p-7">
+        <span class="font-mono text-xs uppercase tracking-widest text-sand">{item.theme}</span>
+        <blockquote class="m-0 mt-5 flex-1 border-0 p-0 text-lg leading-relaxed text-chalk">“{item.quote}”</blockquote>
+        <figcaption class="mt-8 text-xs text-ash">{item.context}<br />Customer identity withheld</figcaption>
+      </figure>
+    ))}
+  </div>
+  <p class="mt-4 text-xs text-ash">Selected feedback excerpts, not a representative survey sample.</p>
+  <div id="recognition-gallery" class="mt-12 scroll-mt-24">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-sand">Moments of recognition</p>
+        <h3 class="mt-3 text-2xl font-bold text-chalk">The feedback behind the work.</h3>
+      </div>
+      <a href={achievementsFolder} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center rounded-xl border border-sand/40 px-5 py-3 text-sm font-semibold text-sand transition-colors hover:bg-sand/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sand">Browse achievements on Drive <span class="ml-2" aria-hidden="true">↗</span></a>
+    </div>
+    <div class="mt-6 grid gap-5 md:grid-cols-2">
+      {gallery.map(item => (
+        <figure class="m-0 overflow-hidden rounded-2xl border border-hair bg-ink-soft">
+          <a href={item.src} target="_blank" rel="noopener noreferrer" aria-label={`Open full-size image: ${item.title}`} class="group block bg-white/95 p-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sand">
+            <img src={item.src} alt={item.alt} width={item.src.endsWith('.jpg') ? 1280 : 1401} height={item.src.endsWith('.jpg') ? 889 : 341} loading="lazy" decoding="async" class="h-56 w-full object-contain transition-opacity group-hover:opacity-80 sm:h-64" />
+          </a>
+          <figcaption class="p-6">
+            <h4 class="text-lg font-semibold text-chalk">{item.title}</h4>
+            <p class="mt-2 text-sm leading-relaxed text-ash">{item.caption}</p>
+            <a href={item.src} target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-sand hover:underline">View full-size image <span class="ml-2" aria-hidden="true">↗</span></a>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+  <article class="mt-8 rounded-2xl border border-hair bg-ink-raise p-7 sm:p-10">
+    <div class="grid gap-8 md:grid-cols-2">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-sand">Mentoring & team building</p>
+        <h3 class="mt-4 text-3xl font-bold text-chalk">Helping a new Tier 1 team find its footing.</h3>
+        <p class="mt-5 text-base leading-relaxed text-ash">At Acquia, I help Associate Support Specialists grow from new starters into more confident troubleshooters. I guide their onboarding, support their technical learning, and act as a first point of contact when a case escalates or they need a second perspective.</p>
+        <a class="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-sand hover:underline" href="/blog/building-confidence-in-support/">Read my mentoring story <span aria-hidden="true" class="ml-2">→</span></a>
+      </div>
+      <ol class="m-0 grid gap-5 p-0 list-none">
+        <li><h4 class="text-base font-semibold text-chalk">01 / Start with the customer</h4><p class="mt-2 text-sm text-ash">Understand the daily responsibilities of support, clarify business impact, and respond with empathy.</p></li>
+        <li><h4 class="text-base font-semibold text-chalk">02 / Build technical understanding</h4><p class="mt-2 text-sm text-ash">Explore Drupal, Acquia Cloud Platform, Code Studio, Pipelines, Solr search, and DAM. Support preparation for Cloud Pro and Drupal Site Builder certifications.</p></li>
+        <li><h4 class="text-base font-semibold text-chalk">03 / Stay present through escalation</h4><p class="mt-2 text-sm text-ash">Help colleagues investigate evidence, explain their reasoning, and communicate a clear next step.</p></li>
+      </ol>
+    </div>
+  </article>
+</section>
+
+<section id="projects" class="scroll-mt-24 border-t border-hair/60 py-20" aria-labelledby="projects-title">
+  <p class="mb-4 font-mono text-xs uppercase tracking-widest text-sand">Projects & open source</p>
+  <h2 id="projects-title" class="text-3xl font-bold tracking-tight text-chalk sm:text-5xl">From support experience to shared tools.</h2>
+  <p class="mt-6 max-w-2xl text-base leading-relaxed text-ash">Customer questions shape what I learn—and what I build next.</p>
+  <div class="mt-10 grid gap-5 md:grid-cols-2">
+    <article class="rounded-2xl border border-hair bg-ink-soft p-8">
+      <p class="font-mono text-xs uppercase tracking-widest text-sand">Drupal community contribution</p>
+      <h3 class="mt-5 text-3xl font-bold text-chalk">IP Analyser</h3>
+      <p class="mt-4 text-base leading-relaxed text-ash">A Drupal module that turns uploaded Apache access logs into readable traffic reports. Explore request counts by IP address, browser or bot, page path, and date to investigate unusual traffic.</p>
+      <p class="mt-4 text-sm text-ash">Private reports inside Drupal, with no external analytics service. Built for investigating existing logs rather than real-time visitor tracking.</p>
+      <a class="mt-8 inline-flex min-h-11 items-center text-sm font-semibold text-sand hover:underline" href="https://www.drupal.org/project/ip_analyser" target="_blank" rel="noopener noreferrer">Explore on Drupal.org <span class="ml-2" aria-hidden="true">↗</span></a>
+    </article>
+    <article class="rounded-2xl border border-hair bg-ink-soft p-8">
+      <p class="font-mono text-xs uppercase tracking-widest text-sand">Swift · AppKit · macOS</p>
+      <h3 class="mt-5 text-3xl font-bold text-chalk">SpeedSentry</h3>
+      <p class="mt-4 text-base leading-relaxed text-ash">A native macOS menu bar app that makes intermittent connectivity easier to investigate. It estimates download speed, alerts on low results, and keeps a local incident history with CSV exports in India Standard Time.</p>
+      <p class="mt-4 text-sm text-ash">Built with Swift and AppKit. Configurable checks, recovery tracking, and a Low Data Mode; available through my Homebrew tap.</p>
+      <a class="mt-8 inline-flex min-h-11 items-center text-sm font-semibold text-sand hover:underline" href="https://github.com/keshavbhardwaz/speedsentry" target="_blank" rel="noopener noreferrer">Explore the code & installation guide <span class="ml-2" aria-hidden="true">↗</span></a>
+    </article>
+  </div>
+</section>

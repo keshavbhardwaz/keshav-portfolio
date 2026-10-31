@@ -1,5 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import ImpactShowcase from '../components/ImpactShowcase.astro';
+import '../styles/portfolio.css';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE, SOCIALS, PROFILE } from '../consts';
@@ -246,6 +248,14 @@ const terminalScenarios = [
 /** Technical thoughts and blog posts */
 const posts = [
 	{
+		title: 'Building Confidence, One Support Case at a Time',
+		category: 'Leadership',
+		date: 'Oct 2026',
+		readTime: '4 min read',
+		note: 'Helping a new Tier 1 team connect customer empathy with technical investigation.',
+		slug: 'building-confidence-in-support',
+	},
+	{
 		title: 'From the Escalation Queue to On-Call SRE',
 		category: 'Reliability',
 		date: 'Sep 2026',
@@ -288,7 +298,7 @@ const posts = [
 			description={SITE_DESCRIPTION}
 		/>
 	</head>
-	<body class="bg-ink text-ash selection:bg-sand selection:text-ink relative">
+	<body class="portfolio bg-ink text-ash selection:bg-sand selection:text-ink relative">
 		<!-- Analog film grain texture overlay (Mayank style) -->
 		<div class="grain" aria-hidden="true"></div>
 
@@ -308,7 +318,8 @@ const posts = [
 
 		<main id="content" class="w-full">
 			<!-- Option A: Hero Section with Interactive Physics Dot Canvas -->
-			<section class="relative min-h-[92dvh] overflow-hidden border-b border-hair/70 flex flex-col justify-center">
+			<section id="hero" class="relative min-h-[92dvh] overflow-hidden border-b border-hair/70 flex flex-col justify-center">
+				<div class="aurora" aria-hidden="true"></div>
 				<!-- Interactive Canvas Field (Option A) -->
 				<canvas
 					id="field"
@@ -348,20 +359,20 @@ const posts = [
 
 					<!-- Subheading with narrative -->
 					<p class="mt-7 max-w-2xl text-lg leading-relaxed text-ash sm:text-xl">
-						I am <strong class="font-bold text-chalk">{PROFILE.name}</strong>. Over 5 years keeping enterprise digital systems resilient — 3.5+ years resolving critical enterprise Drupal DXP escalations at <span class="text-chalk font-semibold">Acquia</span>, preceded by high-volume telecom database operations at <span class="text-chalk font-semibold">Bharti Airtel</span>.
+						I’m <strong class="font-bold text-chalk">{PROFILE.name}</strong>. I solve complex customer problems, help support engineers grow, and build toward more resilient platforms. Over 5 years in support and operations, including 3.5+ years at <span class="text-chalk font-semibold">Acquia</span>.
 					</p>
 
 					<p class="mt-3 max-w-2xl text-base leading-relaxed text-dust">
-						Tested in the crucible of armed forces competitive leadership (cleared <strong class="text-ash font-medium">UPSC CDS 3x, AFCAT 5x</strong>, multiple SSBs). Now leveling up from triaging platforms to architecting them with <strong class="text-ash font-medium">Docker, Kubernetes, AWS, automated CI/CD pipelines, and Python</strong>.
+						Customer empathy. Technical curiosity. Calm under pressure. Exploring what comes next with <strong class="text-ash font-medium">Docker, Kubernetes, AWS, and automation</strong>.
 					</p>
 
 					<!-- Action CTAs + Dynamic Copy Email Button -->
 					<div class="mt-10 flex flex-wrap items-center gap-4">
 						<a
-							href="#capabilities"
+							href="#projects"
 							class="group inline-flex items-center gap-2 rounded-full bg-chalk px-6 py-3.5 text-sm font-bold text-ink no-underline transition-all duration-200 hover:bg-sand hover:shadow-lg hover:shadow-sand/10"
 						>
-							What I am Hired For
+							Explore my work
 							<span
 								class="transition-transform duration-200 group-hover:translate-x-1"
 								aria-hidden="true">&rarr;</span
@@ -369,10 +380,10 @@ const posts = [
 						</a>
 
 						<a
-							href="#journey"
+							href="#impact"
 							class="inline-flex items-center rounded-full border border-hair bg-ink-soft/80 backdrop-blur-md px-5 py-3.5 text-sm font-semibold text-chalk no-underline transition-colors duration-200 hover:border-sand/40 hover:text-sand"
 						>
-							Career Milestones & Leadership
+							People & impact
 						</a>
 
 						<!-- Interactive Copy Email Button -->
@@ -432,6 +443,12 @@ const posts = [
 				</div>
 			</section>
 
+			<nav class="explore-strip" aria-label="Explore portfolio sections">
+				<a href="#capabilities"><span>01</span> Engineering <span aria-hidden="true">↗</span></a>
+				<a href="#impact"><span>02</span> People & impact <span aria-hidden="true">↗</span></a>
+				<a href="#projects"><span>03</span> Open source <span aria-hidden="true">↗</span></a>
+				<a href="#writing"><span>04</span> Field notes <span aria-hidden="true">↗</span></a>
+			</nav>
 			<!-- Option B: Sticky Stacking Capability Cards ("What I am hired for") -->
 			<section id="capabilities" class="relative">
 				<div class="mx-auto max-w-5xl px-6 pt-24 pb-8 sm:pt-32 sm:pb-12">
@@ -525,6 +542,7 @@ const posts = [
 
 			<!-- Option C: Horizontal Career Rail with Giant Accent Years & SSB Leadership -->
 			<section id="journey" class="relative overflow-hidden border-t border-hair/70 py-24 sm:py-32">
+				<div class="journey-panel">
 				<div class="mx-auto max-w-5xl px-6 mb-12">
 					<div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
 						<div>
@@ -535,8 +553,8 @@ const posts = [
 								From the testing crucible to cloud platforms
 							</h2>
 						</div>
-						<span class="font-mono text-xs text-dust hidden sm:inline">
-							Scroll or drag horizontally &rarr;
+						<span id="journey-hint" class="font-mono text-xs text-dust hidden sm:inline">
+							Swipe or scroll horizontally &rarr;
 						</span>
 					</div>
 					<p class="mt-3 max-w-2xl text-base leading-relaxed text-ash">
@@ -547,6 +565,9 @@ const posts = [
 				<!-- Horizontal Scrolling Track -->
 				<div
 					id="pan-track"
+					tabindex="0"
+					role="region"
+					aria-label="Career milestones, scroll horizontally to explore"
 					class="flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 no-scrollbar md:gap-8 lg:px-12"
 				>
 					{
@@ -589,6 +610,7 @@ const posts = [
 						>
 						</div>
 					</div>
+				</div>
 				</div>
 			</section>
 
@@ -739,6 +761,7 @@ const posts = [
 			</section>
 
 			<!-- Leadership Philosophy -->
+			<ImpactShowcase />
 			<section id="philosophy" class="scroll-mt-24 border-t border-hair/60 py-20">
 				<div class="mx-auto max-w-5xl px-6">
 					<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-sand">
@@ -979,19 +1002,52 @@ const posts = [
 				});
 			})();
 
-			// --- 2. Option C: Horizontal Track Scroll Progress ---
+			// Map ordinary page scrolling to the timeline without intercepting wheel events.
 			(function () {
 				const track = document.getElementById('pan-track');
 				const progress = document.getElementById('pan-progress');
-				if (track && progress) {
-					track.addEventListener('scroll', () => {
-						const maxScroll = track.scrollWidth - track.clientWidth;
-						if (maxScroll > 0) {
-							const percent = Math.min(Math.max((track.scrollLeft / maxScroll) * 100, 15), 100);
-							progress.style.width = percent + '%';
-						}
-					});
-				}
+				const section = document.getElementById('journey');
+				const panel = section?.querySelector('.journey-panel');
+				const hint = document.getElementById('journey-hint');
+				const motion = matchMedia('(prefers-reduced-motion: reduce)');
+				if (!track || !progress || !panel) return;
+				let active = false, distance = 0, pending = false;
+				const updateProgress = () => {
+					const max = track.scrollWidth - track.clientWidth;
+					progress.style.width = (max > 0 ? 15 + 85 * track.scrollLeft / max : 100) + '%';
+				};
+				const update = () => {
+					pending = false;
+					if (active) {
+						const offset = parseFloat(section.style.getPropertyValue('--journey-top'));
+						const fraction = Math.max(0, Math.min(1, (offset - section.getBoundingClientRect().top) / distance));
+						track.scrollLeft = fraction * distance;
+					}
+					updateProgress();
+				};
+				const measure = () => {
+					section.classList.remove('journey-pinned');
+					section.style.height = '';
+					const top = (document.querySelector('header')?.getBoundingClientRect().height || 64) + 16;
+					section.style.setProperty('--journey-top', top + 'px');
+					distance = track.scrollWidth - track.clientWidth;
+					// Tall cards and small screens retain native horizontal scrolling.
+					active = !motion.matches && innerWidth >= 768 && distance > 0 && panel.offsetHeight + 64 < innerHeight - top;
+					if (active) {
+						section.classList.add('journey-pinned');
+						section.style.height = (panel.offsetHeight + distance) + 'px';
+					}
+					if (hint) hint.textContent = active ? 'Scroll down to explore →' : 'Swipe or scroll horizontally →';
+					update();
+				};
+				window.addEventListener('scroll', () => {
+					if (!pending) { pending = true; requestAnimationFrame(update); }
+				}, { passive: true });
+				track.addEventListener('scroll', updateProgress, { passive: true });
+				window.addEventListener('resize', measure);
+				motion.addEventListener('change', measure);
+				document.fonts.ready.then(measure);
+				measure();
 			})();
 
 			// --- 3. Copy Email Interaction ---
