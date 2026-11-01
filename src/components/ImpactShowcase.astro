@@ -1,8 +1,11 @@
 ---
+interface Props { section?: 'impact' | 'projects' | 'all' }
+const { section = 'all' } = Astro.props;
 const achievementsFolder = 'https://drive.google.com/drive/folders/133qc-Wl9_FxPo76VXPPJGIhgqZ_VJZaN?usp=drive_link';
 const gallery = [
-  { src: '/images/achievements/customer-feedback.jpg', title: 'The voice of our customers', alt: 'Customer feedback slide including recognition for Keshav’s responsiveness, investigation, and regular follow-up.', caption: 'Customer feedback highlighting my responsiveness, detailed investigations, and consistent updates throughout a case.' },
-  { src: '/images/achievements/team-recognition.png', title: 'Quality support. A stronger team.', alt: 'Team shoutout recognizing Keshav as Q3 CSAT champion and acknowledging his dedication to training new team members.', caption: 'A team shoutout recognizing customer support quality alongside my commitment to helping new colleagues grow.' },
+  { src: '/images/achievements/customer-follow-through.png', width: 2570, height: 1334, title: 'Helping customers understand the why.', alt: 'Customer survey report with feedback on timely information, investigation reports, and follow-up calls.', caption: 'Selected survey responses highlighting timely communication and detailed investigations that helped customers understand an issue and prevent it from recurring.' },
+  { src: '/images/achievements/customer-recognition.png', width: 2378, height: 1230, title: 'Patience, knowledge, and follow-through.', alt: 'Customer feedback praising Keshav’s patience and root-cause investigation, with a congratulatory reply from Acquia’s VP of Global Support.', caption: 'Recognition for patient troubleshooting, sharing evidence, and helping a customer identify the root cause—with encouragement from support leadership.' },
+  { src: '/images/achievements/team-recognition.png', width: 1401, height: 309, title: 'Quality support. A stronger team.', alt: 'Team shoutout recognizing Keshav as Q3 CSAT champion and acknowledging his dedication to training new team members.', caption: 'Shoutout in Townhall for highest CSAT, alongside recognition for helping new team members grow.' },
 ];
 const feedback = [
   { theme: 'Follow-through', quote: 'You have done excellent followup with us and newrelic team to resolve the issue.', context: 'Customer survey · cross-team troubleshooting' },
@@ -10,9 +13,9 @@ const feedback = [
 ];
 ---
 
-<section id="impact" class="scroll-mt-24 border-t border-hair/60 py-20" aria-labelledby="impact-title">
+{section !== 'projects' && <section id="impact" class="scroll-mt-24 border-t border-hair/60 py-20" aria-labelledby="impact-title">
   <p class="mb-4 font-mono text-xs uppercase tracking-widest text-sand">Achievements & customer impact</p>
-  <h2 id="impact-title" class="max-w-3xl text-3xl font-bold tracking-tight text-chalk sm:text-5xl">Earn trust. Share what you know.</h2>
+  <h2 id="impact-title" class="max-w-3xl text-3xl font-bold tracking-tight text-chalk sm:text-5xl">Better when we grow together.</h2>
   <p class="mt-6 max-w-2xl text-base leading-relaxed text-ash">The most meaningful recognition comes from customers who feel heard—and colleagues who feel ready to handle their next difficult case.</p>
   <div class="mt-10 grid gap-5 md:grid-cols-3">
     <article class="rounded-2xl border border-sand/30 bg-sand/5 p-7 md:col-span-1">
@@ -39,11 +42,11 @@ const feedback = [
       </div>
       <a href={achievementsFolder} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center rounded-xl border border-sand/40 px-5 py-3 text-sm font-semibold text-sand transition-colors hover:bg-sand/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sand">Browse achievements on Drive <span class="ml-2" aria-hidden="true">↗</span></a>
     </div>
-    <div class="mt-6 grid gap-5 md:grid-cols-2">
+    <div class="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {gallery.map(item => (
         <figure class="m-0 overflow-hidden rounded-2xl border border-hair bg-ink-soft">
           <a href={item.src} target="_blank" rel="noopener noreferrer" aria-label={`Open full-size image: ${item.title}`} class="group block bg-white/95 p-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sand">
-            <img src={item.src} alt={item.alt} width={item.src.endsWith('.jpg') ? 1280 : 1401} height={item.src.endsWith('.jpg') ? 889 : 341} loading="lazy" decoding="async" class="h-56 w-full object-contain transition-opacity group-hover:opacity-80 sm:h-64" />
+            <img src={item.src} alt={item.alt} width={item.width} height={item.height} loading="lazy" decoding="async" class="h-56 w-full object-contain transition-opacity group-hover:opacity-80 sm:h-64" />
           </a>
           <figcaption class="p-6">
             <h4 class="text-lg font-semibold text-chalk">{item.title}</h4>
@@ -69,11 +72,11 @@ const feedback = [
       </ol>
     </div>
   </article>
-</section>
+</section>}
 
-<section id="projects" class="scroll-mt-24 border-t border-hair/60 py-20" aria-labelledby="projects-title">
+{section !== 'impact' && <section id="projects" class="scroll-mt-24 border-t border-hair/60 py-20" aria-labelledby="projects-title">
   <p class="mb-4 font-mono text-xs uppercase tracking-widest text-sand">Projects & open source</p>
-  <h2 id="projects-title" class="text-3xl font-bold tracking-tight text-chalk sm:text-5xl">From support experience to shared tools.</h2>
+  <h2 id="projects-title" class="text-3xl font-bold tracking-tight text-chalk sm:text-5xl">Small tools. Useful problems.</h2>
   <p class="mt-6 max-w-2xl text-base leading-relaxed text-ash">Customer questions shape what I learn—and what I build next.</p>
   <div class="mt-10 grid gap-5 md:grid-cols-2">
     <article class="rounded-2xl border border-hair bg-ink-soft p-8">
@@ -91,4 +94,4 @@ const feedback = [
       <a class="mt-8 inline-flex min-h-11 items-center text-sm font-semibold text-sand hover:underline" href="https://github.com/keshavbhardwaz/speedsentry" target="_blank" rel="noopener noreferrer">Explore the code & installation guide <span class="ml-2" aria-hidden="true">↗</span></a>
     </article>
   </div>
-</section>
+</section>}

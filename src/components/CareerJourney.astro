@@ -1,0 +1,132 @@
+---
+const timeline = [
+ {year:'2016', role:'An engineering foundation', org:'B.Tech', note:'An early foundation in analytical thinking and a curiosity about how things work.'},
+ {year:'2016–2021', role:'Learning persistence', org:'Competitive examinations', note:'Cleared UPSC CDS three times, AFCAT five times, and Indian Railways once. SSB experiences helped shape how I think about teamwork and composure.'},
+ {year:'June 2021', role:'Backend Operations Engineer', org:'Diksha Technologies · Bharti Airtel', note:'Worked in database operations and support, learning the importance of careful investigation and clear handovers.'},
+ {year:'Dec 2022', role:'Drupal DXP Support Engineer', org:'Acquia', note:'Supporting enterprise customers, investigating Drupal and platform issues, and helping new Associate Support Specialists build confidence.'},
+ {year:'Next chapter', role:'Growing into DevOps', org:'Learning in progress', note:'Deepening my understanding of Docker, Kubernetes, AWS, and automation while carrying customer empathy and a support engineer’s curiosity forward.'},
+];
+---
+			<section id="journey" class="relative overflow-hidden border-t border-hair/70 py-24 sm:py-32">
+				<div class="journey-panel">
+				<div class="mx-auto max-w-5xl px-6 mb-12">
+					<div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+						<div>
+							<p class="font-mono text-[11px] uppercase tracking-[0.2em] text-sand">
+								Milestones & Leadership
+							</p>
+							<h2 class="mt-1 text-3xl font-extrabold tracking-tight text-chalk sm:text-5xl">
+								Each chapter taught me something.
+							</h2>
+						</div>
+						<span id="journey-hint" class="font-mono text-xs text-dust hidden sm:inline">
+							Swipe or scroll horizontally &rarr;
+						</span>
+					</div>
+					<p class="mt-3 max-w-2xl text-base leading-relaxed text-ash">
+						From operations to customer support, and now deeper into DevOps. A journey built through practice, questions, and people willing to share what they know.
+					</p>
+				</div>
+
+				<!-- Horizontal Scrolling Track -->
+				<div
+					id="pan-track"
+					tabindex="0"
+					role="region"
+					aria-label="Career milestones, scroll horizontally to explore"
+					class="flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 no-scrollbar md:gap-8 lg:px-12"
+				>
+					{
+						timeline.map((item) => (
+							<article class="w-[85vw] shrink-0 snap-start rounded-xl border border-hair bg-ink-soft p-6 transition-all hover:border-sand/40 sm:w-[50vw] lg:w-[32vw] flex flex-col justify-between">
+								<div>
+									<!-- Giant Accent Year -->
+									<span class="block font-mono text-4xl sm:text-5xl font-extrabold tracking-tight text-sand">
+										{item.year}
+									</span>
+
+									<h3 class="mt-4 text-xl font-bold tracking-tight text-chalk">
+										{item.role}
+									</h3>
+
+									<p class="mt-1 font-mono text-xs text-sand font-medium uppercase tracking-wider">
+										{item.org}
+									</p>
+
+									<p class="mt-4 text-sm leading-relaxed text-ash">
+										{item.note}
+									</p>
+								</div>
+
+								<div class="mt-6 pt-3 border-t border-hair/40 flex items-center justify-between text-[11px] font-mono text-dust">
+									<span>My journey</span>
+									<span class="text-sand">Learning along the way</span>
+								</div>
+							</article>
+						))
+					}
+				</div>
+
+				<!-- Horizontal Progress Indicator Bar -->
+				<div class="mx-auto mt-8 max-w-5xl px-6">
+					<div class="h-1 w-full rounded-full bg-hair overflow-hidden">
+						<div
+							id="pan-progress"
+							class="h-full w-1/4 rounded-full bg-sand transition-all duration-150"
+						>
+						</div>
+					</div>
+				</div>
+				</div>
+			</section>
+
+
+<script is:inline>
+			(function () {
+				const track = document.getElementById('pan-track');
+				const progress = document.getElementById('pan-progress');
+				const section = document.getElementById('journey');
+				const panel = section?.querySelector('.journey-panel');
+				const hint = document.getElementById('journey-hint');
+				const motion = matchMedia('(prefers-reduced-motion: reduce)');
+				if (!track || !progress || !panel) return;
+				let active = false, distance = 0, pending = false;
+				const updateProgress = () => {
+					const max = track.scrollWidth - track.clientWidth;
+					progress.style.width = (max > 0 ? 15 + 85 * track.scrollLeft / max : 100) + '%';
+				};
+				const update = () => {
+					pending = false;
+					if (active) {
+						const offset = parseFloat(section.style.getPropertyValue('--journey-top'));
+						const fraction = Math.max(0, Math.min(1, (offset - section.getBoundingClientRect().top) / distance));
+						track.scrollLeft = fraction * distance;
+					}
+					updateProgress();
+				};
+				const measure = () => {
+					section.classList.remove('journey-pinned');
+					section.style.height = '';
+					const top = (document.querySelector('header')?.getBoundingClientRect().height || 64) + 16;
+					section.style.setProperty('--journey-top', top + 'px');
+					distance = track.scrollWidth - track.clientWidth;
+					// Tall cards and small screens retain native horizontal scrolling.
+					active = !motion.matches && innerWidth >= 768 && distance > 0 && panel.offsetHeight + 64 < innerHeight - top;
+					if (active) {
+						section.classList.add('journey-pinned');
+						section.style.height = (panel.offsetHeight + distance) + 'px';
+					}
+					if (hint) hint.textContent = active ? 'Scroll down to explore →' : 'Swipe or scroll horizontally →';
+					update();
+				};
+				window.addEventListener('scroll', () => {
+					if (!pending) { pending = true; requestAnimationFrame(update); }
+				}, { passive: true });
+				track.addEventListener('scroll', updateProgress, { passive: true });
+				window.addEventListener('resize', measure);
+				motion.addEventListener('change', measure);
+				document.fonts.ready.then(measure);
+				measure();
+			})();
+
+</script>
