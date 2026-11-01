@@ -24,6 +24,13 @@ const writing = [
 <html lang="en">
  <head><BaseHead title="Keshav Bhardwaj — Engineer, teammate, always learning" description="Support engineer at Acquia, growing into DevOps. Projects, practical notes, and reflections on helping customers and teammates move forward." /></head>
  <body class="portfolio learning-home bg-ink text-ash">
+  <div class="infra-background" aria-hidden="true">
+   <div class="infra-grid"></div>
+   <div class="infra-terminal infra-terminal-code"><div class="infra-title"><span>● ● ●</span> &nbsp; deployment.yaml</div><div class="infra-code"><span class="code-purple">apiVersion:</span> apps/v1<br /><span class="code-purple">kind:</span> Deployment<br /><span class="code-purple">metadata:</span><br />&nbsp; <span class="code-purple">name:</span> <em>platform-api</em><br /><span class="code-purple">spec:</span><br />&nbsp; <span class="code-purple">replicas:</span> <b>3</b><br />&nbsp; <span class="code-purple">containers:</span><br />&nbsp; - <span class="code-purple">image:</span> <em>app:latest</em></div><div class="infra-typing">$ kubectl apply -f deployment.yaml<span class="infra-cursor">_</span></div></div>
+   <div class="infra-terminal infra-terminal-build"><div class="infra-title"><span>●</span> &nbsp; BUILD PIPELINE</div><div class="infra-log-window"><div class="infra-log-stream">$ docker build -t app .<br /><em>✓ loading build context</em><br />&gt; installing dependencies<br /><em>✓ image built</em><br />&gt; deploying containers<br /><em>✓ rollout complete</em><br />$ docker build -t app .<br /><em>✓ loading build context</em><br />&gt; installing dependencies<br /><em>✓ image built</em><br />&gt; deploying containers<br /><em>✓ rollout complete</em></div></div><div class="infra-progress"><i></i></div></div>
+   <div class="infra-terminal infra-terminal-events"><div class="infra-title"><span>●</span> &nbsp; CLUSTER EVENTS</div><div class="infra-pod"><i></i> api-7d8f <em>RUNNING</em></div><div class="infra-pod"><i></i> worker-42 <em>RUNNING</em></div><div class="infra-event"><strong>OOMKilled</strong> <span>→ restarting</span></div><div class="infra-recovery">↳ container healthy <em>✓</em></div></div>
+   <div class="infra-orbit infra-orbit-one"></div><div class="infra-orbit infra-orbit-two"></div>
+  </div>
   <Header />
   <main id="content">
    <section class="welcome" aria-labelledby="welcome-title">

@@ -1,4 +1,54 @@
 .learning-home { --color-ash: #b7c3d3; --color-sand: #9dded0; --accent: #9dded0; }
+.infra-background { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; background: radial-gradient(ellipse at 5% 30%, #123c4938, transparent 38%), radial-gradient(ellipse at 95% 70%, #452f7738, transparent 40%); }
+.learning-home main { position: relative; z-index: 1; }
+.infra-grid { position: absolute; inset: 0; opacity: .35; background-image: linear-gradient(#9cafff12 1px, transparent 1px), linear-gradient(90deg, #9cafff12 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse at center, transparent 15%, black 100%); }
+.infra-terminal { position: absolute; padding: 16px 20px; border: 1px solid #83baff38; border-radius: 10px; color: #9bb8dc; background: #0b1425b3; font: 11px/1.9 var(--font-mono); letter-spacing: .02em; opacity: .3; white-space: nowrap; box-shadow: 0 0 45px #5951bd19; animation: infra-float 14s ease-in-out infinite alternate; }
+.infra-terminal span, .infra-terminal em { color: #7fe4ce; font-style: normal; }
+.infra-terminal strong { color: #ff9d9d; font-weight: 400; animation: infra-alert 8s ease-in-out infinite; }
+.infra-terminal b { color: #b5a4ff; letter-spacing: .3em; animation: infra-alert 3s ease-in-out infinite; }
+.infra-terminal-code { top: 14%; left: 2%; }
+.infra-terminal-build { top: 42%; right: 2%; animation-delay: -5s; }
+.infra-terminal-events { bottom: 8%; left: 4%; animation-delay: -9s; }
+.infra-cursor { animation: infra-alert 1.2s steps(2) infinite; }
+.infra-orbit { position: absolute; width: 320px; height: 320px; border: 1px solid #8b9fff21; border-radius: 50%; animation: infra-spin 35s linear infinite; }
+.infra-orbit::after { content: ''; position: absolute; top: 50%; left: -3px; width: 6px; height: 6px; border-radius: 50%; background: #79e9d8; box-shadow: 0 0 16px #79e9d8; }
+.infra-orbit-one { right: -150px; top: 8%; }
+.infra-orbit-two { left: -180px; bottom: 4%; width: 400px; height: 400px; animation-direction: reverse; }
+@keyframes infra-float { to { transform: translateY(-24px); } }
+@keyframes infra-alert { 50% { opacity: .25; } }
+@keyframes infra-spin { to { transform: rotate(360deg); } }
+@media (max-width: 700px) { .infra-terminal { font-size: 9px; opacity: .19; } .infra-terminal-code { left: -60px; } .infra-terminal-build { right: -60px; } .infra-terminal-events { left: -50px; } }
+@media (prefers-reduced-motion: reduce) { .infra-background * { animation: none !important; } }
+/* Decorative infrastructure activity, kept outside the content flow. */
+.infra-terminal { opacity: .72; border-color: #7389d66b; background: #080f20e8; color: #b5c9e8; box-shadow: 0 12px 50px #0008, 0 0 35px #7462ef1c; font-size: 12px; }
+.infra-title { color: #91a9ce; font-size: 10px; letter-spacing: .14em; border-bottom: 1px solid #8393c43b; padding-bottom: 8px; margin-bottom: 10px; }
+.infra-title span { color: #fd788e; }
+.infra-terminal-code { top: 13%; left: max(1%, calc((100vw - 1620px) / 2)); }
+.infra-terminal-build { top: 37%; right: max(1%, calc((100vw - 1620px) / 2)); }
+.infra-terminal-events { bottom: 6%; left: max(1%, calc((100vw - 1620px) / 2)); }
+.infra-code { color: #e0e8f9; line-height: 1.85; }
+.infra-terminal .code-purple { color: #d4a5ff; }
+.infra-code em, .infra-terminal em { color: #78ead4; }
+.infra-code b { color: #ffc180; animation: none; letter-spacing: normal; }
+.infra-typing { color: #88bfff; width: 0; max-width: 100%; overflow: hidden; white-space: nowrap; animation: infra-type 9s steps(36, end) infinite; }
+.infra-log-window { height: 6em; overflow: hidden; }
+.infra-log-stream { line-height: 1.5em; animation: infra-logs 12s steps(6, end) infinite; }
+.infra-progress { margin-top: 12px; width: 100%; height: 3px; background: #273752; border-radius: 4px; overflow: hidden; }
+.infra-progress i { display: block; height: 100%; width: 100%; transform-origin: left; background: linear-gradient(90deg, #70e5d4, #a485ff); animation: infra-build 12s linear infinite; }
+.infra-pod { display: flex; gap: 8px; align-items: center; }
+.infra-pod em { margin-left: auto; font-size: 10px; }
+.infra-pod i { width: 6px; height: 6px; border-radius: 50%; background: #72e6be; box-shadow: 0 0 9px #72e6be; animation: infra-alert 3s ease-in-out infinite; }
+.infra-event { color: #b7c8e3; animation: infra-event 9s infinite; }
+.infra-terminal .infra-event strong { color: #ff8196; font-weight: 600; animation: none; }
+.infra-recovery { color: #90a6c5; animation: infra-recovery 9s infinite; }
+@keyframes infra-type { 0%, 8% { width: 0; } 45%, 85% { width: 35ch; } 100% { width: 0; } }
+@keyframes infra-logs { to { transform: translateY(-9em); } }
+@keyframes infra-build { 0% { transform: scaleX(0); } 95%, 100% { transform: scaleX(1); } }
+@keyframes infra-event { 0%, 20%, 90%, 100% { opacity: .32; } 30%, 80% { opacity: 1; } }
+@keyframes infra-recovery { 0%, 45% { opacity: .3; } 60%, 100% { opacity: 1; } }
+@media (max-width: 1300px) { .infra-terminal { opacity: .35; } }
+@media (max-width: 700px) { .infra-terminal { opacity: .28; font-size: 10px; } .infra-terminal-code { left: -45px; } .infra-terminal-build { right: -60px; } .infra-terminal-events { left: -40px; } }
+@media (prefers-reduced-motion: reduce) { .infra-typing { width: auto; } .infra-background * { animation: none !important; } }
 .learning-home main { width: min(1120px, calc(100% - 48px)); max-width: none; padding: 0; margin-inline: auto; }
 .learning-home .eyebrow { font: 11px/1.6 var(--font-mono); text-transform: uppercase; letter-spacing: .16em; color: #9dded0; margin-bottom: 20px; }
 .welcome { display: grid; grid-template-columns: 1.6fr 1fr; gap: 64px; padding: 110px 0 72px; position: relative; isolation: isolate; align-items: center; }
