@@ -64,7 +64,7 @@ const writing = [
    <section id="writing" class="home-section" aria-labelledby="writing-title">
     <div class="section-heading"><div><p class="eyebrow">Notes from the journey</p><h2 id="writing-title">A few things worth sharing.</h2></div><a href="/blog/">Browse the notebook ↗</a></div>
     <div class="writing-grid">{writing.map(post => <article class="writing-card"><p class="eyebrow">{post.category}</p><h3><a href={post.href}>{post.title}</a></h3><p>{post.text}</p><a class="read-link" href={post.href}>Read the story <span aria-hidden="true">→</span></a></article>)}
-     <article class="writing-card upcoming"><p class="eyebrow">On my writing list</p><h3>Why I built IP Analyser</h3><p>Turning support questions into a Drupal tool. A project walkthrough I’d like to share next.</p><span class="draft-label">Not published yet</span><a class="read-link" href="https://www.drupal.org/project/ip_analyser" target="_blank" rel="noopener noreferrer">Explore the module meanwhile ↗</a></article>
+     <article class="writing-card"><p class="eyebrow">Open source & practical tools</p><h3><a href="/blog/why-i-built-ip-analyser/">Why I built IP Analyser</a></h3><p>Turning customer questions about traffic consumption into a Drupal investigation tool.</p><a class="read-link" href="/blog/why-i-built-ip-analyser/">Read the story ↗</a></article>
     </div>
    </section>
    <CareerJourney />

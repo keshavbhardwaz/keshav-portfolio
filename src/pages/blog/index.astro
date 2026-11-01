@@ -1,114 +1,48 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
-
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+import '../../styles/portfolio.css';
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+ (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.data.title.localeCompare(b.data.title),
 );
 ---
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+ <head><BaseHead title="Engineering notebook — Keshav Bhardwaj" description="Real support experiences, practical tools, and lessons in helping customers and teammates grow." /></head>
+ <body class="portfolio">
+  <Header />
+  <main id="content">
+   <p class="eyebrow">Learning, one investigation at a time</p>
+   <h1>My engineering notebook.</h1>
+   <p class="intro">Stories from customer support, things I build, and lessons I want to share with the next engineer.</p>
+   <ul>{posts.map(post => <li><article>
+    <p class="category">{post.data.category}</p>
+    <h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+    <p class="summary">{post.data.description}</p>
+    <div class="card-footer"><FormattedDate date={post.data.pubDate} /><a href={`/blog/${post.id}/`} aria-label={`Read ${post.data.title}`}>Read story ↗</a></div>
+   </article></li>)}</ul>
+  </main>
+  <Footer />
+ </body>
 </html>
+<style>
+ main { width: 1060px; padding-block: 72px; }
+ .eyebrow, .category { font: 11px/1.6 var(--font-mono); color: #9dded0; letter-spacing: .12em; text-transform: uppercase; }
+ h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); letter-spacing: -.04em; }
+ .intro { max-width: 640px; font-size: 18px; color: #b7c3d3; margin-block: 24px 44px; }
+ ul { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; list-style: none; margin: 0; padding: 0; }
+ li { display: flex; }
+ article { width: 100%; display: flex; flex-direction: column; border: 1px solid #303b50; border-top: 2px solid #9dded0; border-radius: 16px; padding: 30px; background: linear-gradient(140deg,#182638,#101827); }
+ li:nth-child(3n+2) article { border-top-color: #c6b5ed; }
+ li:nth-child(3n) article { border-top-color: #e9c2a3; }
+ h2 { font-size: 25px; line-height: 1.3; margin-block: 16px; }
+ h2 a { color: #edf2fa; text-decoration: none; }
+ h2 a:hover { color: #9dded0; }
+ .summary { font-size: 16px; color: #b7c3d3; }
+ .card-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid #ffffff15; padding-top: 20px; margin-top: auto; font-size: 13px; }
+ a:focus-visible { outline: 2px solid #9dded0; outline-offset: 5px; }
+ @media(max-width:640px) { ul { grid-template-columns: 1fr; } article { padding:24px; } main { padding-block: 40px; } }
+</style>
